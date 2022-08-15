@@ -14,6 +14,13 @@ const theme = extendTheme({
     Text,
     Heading,
   },
+  styles: {
+    global: {
+      body: {
+        bg: "black",
+      },
+    },
+  },
   fonts,
   colors,
   breakpoints,
