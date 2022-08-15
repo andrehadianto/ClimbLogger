@@ -13,7 +13,7 @@ export const PageHead = ({
   append = true,
   children,
 }: PropsWithChildren<Props>): JSX.Element => {
-  const appName = "Your App";
+  const appName = "ALLEZ";
   const pageName = () => {
     if (append) {
       return name ? `${name} | ${appName}` : appName;

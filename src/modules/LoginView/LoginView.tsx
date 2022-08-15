@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 import {
   Box,
   Button,
@@ -6,14 +7,21 @@ import {
   FormControl,
   Heading,
   Input,
+  InputGroup,
+  InputRightElement,
   Link,
   Text,
   VStack,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
+import { EyeClosedIcon, EyeOpenIcon } from "@/common/components/CustomIcon";
+
 export const LoginView = () => {
+  const [visiblePwd, setVisiblePwd] = useState<boolean>(false);
+
   const {
     handleSubmit,
     register,
@@ -41,14 +49,31 @@ export const LoginView = () => {
               />
             </FormControl>
             <FormControl isRequired>
-              <Input
-                placeholder="Password"
-                type="password"
-                variant="flushed"
-                {...register("password", {
-                  required: "This is required",
-                })}
-              />
+              <InputGroup>
+                <Input
+                  placeholder="Password"
+                  type={visiblePwd ? "text" : "password"}
+                  variant="flushed"
+                  {...register("password", {
+                    required: "This is required",
+                  })}
+                />
+                <InputRightElement
+                  children={
+                    visiblePwd ? (
+                      <EyeClosedIcon
+                        cursor={"pointer"}
+                        onClick={() => setVisiblePwd((prev) => !prev)}
+                      />
+                    ) : (
+                      <EyeOpenIcon
+                        cursor={"pointer"}
+                        onClick={() => setVisiblePwd((prev) => !prev)}
+                      />
+                    )
+                  }
+                />
+              </InputGroup>
             </FormControl>
           </VStack>
           <Flex justifyContent={"flex-end"} marginBottom={"14px"}>
@@ -72,7 +97,7 @@ export const LoginView = () => {
         </Box>
       </form>
       <Flex justifyContent={"center"} marginBottom={"22px"}>
-        <NextLink passHref href="#">
+        <NextLink passHref href="/register">
           <Link
             color={"yellow.50"}
             fontSize={"12px"}
@@ -84,10 +109,11 @@ export const LoginView = () => {
           </Link>
         </NextLink>
       </Flex>
-      <Divider marginBottom={"22px"} />
+      <Divider borderColor="white" borderWidth={"1px"} marginBottom={"22px"} />
       <Flex
         alignItems={"center"}
         bgColor={"white"}
+        color="black"
         height={"42px"}
         justifyContent={"center"}
         textAlign="center"

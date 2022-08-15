@@ -5,7 +5,7 @@ import { LoginView } from "@/modules/LoginView";
 const LoginPage = () => {
   return (
     <div className="h-full px-12 py-20">
-      <PageHead append={false} description="User Auth" name="User Auth" />
+      <PageHead description="Login" name="Login" />
       <LoginView />
     </div>
   );

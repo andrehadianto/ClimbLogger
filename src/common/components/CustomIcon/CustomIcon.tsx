@@ -8,12 +8,14 @@ export const CustomIcon = ({
   height = 24,
   size,
   viewBox = "0 0 24 24",
+  fill = "white",
   name,
   ...props
 }: PropsWithChildren<CustomIconProps>): JSX.Element => {
   return (
     <svg
       aria-labelledby={name}
+      fill={fill}
       height={size || height}
       role="presentation"
       viewBox={viewBox}

@@ -9,6 +9,7 @@ export const Button: ComponentStyleConfig = {
       opacity: "40%",
     },
     width: "fit-content",
+    color: "black",
   },
   sizes: {
     xs: {
