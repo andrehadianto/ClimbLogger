@@ -1,12 +1,10 @@
-import { VStack } from "@chakra-ui/react";
-
 import { PageHead } from "@/common/components/PageHead";
 
 import { LoginView } from "@/modules/LoginView";
 
 const LoginPage = () => {
   return (
-    <div className="h-full p-4 xs:py-[50px]">
+    <div className="h-full px-12 py-20">
       <PageHead append={false} description="User Auth" name="User Auth" />
       <LoginView />
     </div>
