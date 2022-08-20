@@ -1,125 +1,58 @@
-/* eslint-disable react/no-children-prop */
-import {
-  Box,
-  Button,
-  Divider,
-  Flex,
-  FormControl,
-  Heading,
-  Input,
-  InputGroup,
-  InputRightElement,
-  Link,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
-import NextLink from "next/link";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { onAuthStateChanged } from "firebase/auth";
+import "firebaseui/dist/firebaseui.css";
+import { auth } from "firebaseui";
+import { useEffect, useRef, useState } from "react";
 
-import { EyeClosedIcon, EyeOpenIcon } from "@/common/components/CustomIcon";
+interface Props {
+  // https://github.com/firebase/firebaseui-web#configuration
+  uiConfig: auth.Config;
 
-export const LoginView = () => {
-  const [visiblePwd, setVisiblePwd] = useState<boolean>(false);
+  // Callback that will be passed the FirebaseUi instance before it starts
+  uiCallback?(ui: auth.AuthUI): void;
 
-  const {
-    handleSubmit,
-    register,
-    formState: { isSubmitting },
-  } = useForm();
+  // The Firebase App auth instance to use
+  firebaseAuth: any; // Authentication config
+}
 
-  return (
-    <Box>
-      <VStack marginBottom={88}>
-        <Heading fontWeight="hairline" size="h1">
-          ALLEZ
-        </Heading>
-        <Text size="md">climb logger</Text>
-      </VStack>
-      <form onSubmit={handleSubmit((values) => console.log(values))}>
-        <Box marginBottom={"6px"}>
-          <VStack marginBottom={"14px"} spacing="12px">
-            <FormControl>
-              <Input
-                placeholder="Email"
-                variant="flushed"
-                {...register("email", {
-                  required: "This is required",
-                })}
-              />
-            </FormControl>
-            <FormControl isRequired>
-              <InputGroup>
-                <Input
-                  placeholder="Password"
-                  type={visiblePwd ? "text" : "password"}
-                  variant="flushed"
-                  {...register("password", {
-                    required: "This is required",
-                  })}
-                />
-                <InputRightElement
-                  children={
-                    visiblePwd ? (
-                      <EyeClosedIcon
-                        cursor={"pointer"}
-                        onClick={() => setVisiblePwd((prev) => !prev)}
-                      />
-                    ) : (
-                      <EyeOpenIcon
-                        cursor={"pointer"}
-                        onClick={() => setVisiblePwd((prev) => !prev)}
-                      />
-                    )
-                  }
-                />
-              </InputGroup>
-            </FormControl>
-          </VStack>
-          <Flex justifyContent={"flex-end"} marginBottom={"14px"}>
-            <NextLink passHref href="#">
-              <Link
-                color={"white"}
-                fontSize={"12px"}
-                fontWeight={"bold"}
-                lineHeight={"24px"}
-                textDecor="underline"
-              >
-                Forgot password?
-              </Link>
-            </NextLink>
-          </Flex>
-          <Flex marginBottom={"14px"}>
-            <Button isLoading={isSubmitting} type="submit" width={"full"}>
-              SIGN IN
-            </Button>
-          </Flex>
-        </Box>
-      </form>
-      <Flex justifyContent={"center"} marginBottom={"22px"}>
-        <NextLink passHref href="/register">
-          <Link
-            color={"yellow.50"}
-            fontSize={"12px"}
-            fontWeight={"bold"}
-            lineHeight={"24px"}
-            textDecor="underline"
-          >
-            REGISTER A NEW ACCOUNT
-          </Link>
-        </NextLink>
-      </Flex>
-      <Divider borderColor="white" borderWidth={"1px"} marginBottom={"22px"} />
-      <Flex
-        alignItems={"center"}
-        bgColor={"white"}
-        color="black"
-        height={"42px"}
-        justifyContent={"center"}
-        textAlign="center"
-      >
-        Continue with Google
-      </Flex>
-    </Box>
-  );
+export const LoginView = ({ firebaseAuth, uiConfig, uiCallback }: Props) => {
+  const [firebaseui, setFirebaseui] = useState<
+    typeof import("firebaseui") | null
+  >(null);
+  const [userSignedIn, setUserSignedIn] = useState(false);
+  const elementRef = useRef(null);
+
+  useEffect(() => {
+    // Load the package only after the component has mounted for SSR
+    setFirebaseui(require("firebaseui"));
+  }, []);
+
+  useEffect(() => {
+    if (firebaseui === null) return;
+
+    // Get or Create a firebaseUI instance
+    const firebaseUiWidget =
+      firebaseui.auth.AuthUI.getInstance() ||
+      new firebaseui.auth.AuthUI(firebaseAuth);
+    if (uiConfig.signInFlow === "popup") firebaseUiWidget.reset();
+
+    // Track the auth state to reset firebaseUi if the user signs out
+    const unregisterAuthObserver = onAuthStateChanged(firebaseAuth, (user) => {
+      if (!user && userSignedIn) firebaseUiWidget.reset();
+      setUserSignedIn(!!user);
+    });
+
+    // Trigger the callback if any was set
+    if (uiCallback) uiCallback(firebaseUiWidget);
+
+    // Render the widget
+    firebaseUiWidget.start(elementRef.current, uiConfig);
+
+    return () => {
+      unregisterAuthObserver();
+      firebaseUiWidget.reset();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [firebaseui, uiConfig]);
+
+  return <div ref={elementRef} />;
 };
