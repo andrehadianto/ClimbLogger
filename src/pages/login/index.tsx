@@ -1,3 +1,4 @@
+import { AuthLayout } from "@/common/components/AuthLayout";
 import { PageHead } from "@/common/components/PageHead";
 
 import { LoginView } from "@/modules/LoginView";
@@ -10,5 +11,7 @@ const LoginPage = () => {
     </div>
   );
 };
+
+LoginPage.layout = AuthLayout;
 
 export default LoginPage;

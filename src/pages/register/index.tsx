@@ -1,3 +1,4 @@
+import { AuthLayout } from "@/common/components/AuthLayout";
 import { PageHead } from "@/common/components/PageHead";
 
 import { RegisterView } from "@/modules/RegisterView";
@@ -10,5 +11,7 @@ const RegisterPage = () => {
     </div>
   );
 };
+
+RegisterPage.layout = AuthLayout;
 
 export default RegisterPage;
