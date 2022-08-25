@@ -1,6 +1,6 @@
 import { PageHead } from "@/common/components/PageHead";
 
-export default function Home() {
+const User = () => {
   return (
     <div className="h-full">
       <PageHead
@@ -9,8 +9,10 @@ export default function Home() {
         name="Home"
       />
       <section className="grid place-content-center h-full">
-        <span>Hello world</span>
+        <span>Hello user</span>
       </section>
     </div>
   );
-}
+};
+
+export default User;
