@@ -27,6 +27,14 @@ if (!firebase.apps.length) {
 const LoginPage = () => {
   // Configure FirebaseUI
   const uiConfig = {
+    callbacks: {
+      signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+        console.log(authResult);
+        console.log(redirectUrl);
+        // disable redirection
+        return false;
+      },
+    },
     signInFlow: "popup",
     // Redirect url after sign in is successful. Alternatively can use callbacks.signInSuccess fn
     signInSuccessUrl: "/",
