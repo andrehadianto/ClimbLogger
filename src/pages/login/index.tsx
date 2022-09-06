@@ -32,7 +32,7 @@ const LoginPage = () => {
       signInSuccessWithAuthResult: function (authResult, redirectUrl) {
         console.log(authResult);
         console.log(redirectUrl);
-        return true;
+        return true; // false to not redirect
       },
     },
     signInFlow: "popup",

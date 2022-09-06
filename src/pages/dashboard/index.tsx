@@ -1,16 +1,12 @@
 import { PageHead } from "@/common/components/PageHead";
 
+import { DashboardView } from "@/modules/DashboardView";
+
 const Dashboard = () => {
   return (
     <div className="h-full">
-      <PageHead
-        append={false}
-        description="Home page description"
-        name="Home"
-      />
-      <section className="grid place-content-center h-full">
-        <span>Hello dashboard</span>
-      </section>
+      <PageHead description="Logs" name="Logs" />
+      <DashboardView />
     </div>
   );
 };

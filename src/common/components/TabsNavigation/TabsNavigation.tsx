@@ -51,7 +51,7 @@ export const TabsNavigation = () => {
       bottom={0}
       height={"64px"}
       padding={"4px 40px"}
-      position={"absolute"}
+      position={"fixed"}
       width={"full"}
       zIndex={99}
     >
