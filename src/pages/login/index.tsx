@@ -1,6 +1,7 @@
 import { Box, Heading, Text, VStack } from "@chakra-ui/react";
 import firebase from "firebase/compat/app";
 
+import { AuthLayout } from "@/common/components/AuthLayout";
 import { PageHead } from "@/common/components/PageHead";
 
 import { LoginView } from "@/modules/LoginView";
@@ -37,7 +38,7 @@ const LoginPage = () => {
     },
     signInFlow: "popup",
     // Redirect url after sign in is successful. Alternatively can use callbacks.signInSuccess fn
-    signInSuccessUrl: "/",
+    signInSuccessUrl: "/dashboard",
     signInOptions: [
       firebase.auth.EmailAuthProvider.PROVIDER_ID,
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
