@@ -19,6 +19,8 @@
     "@emotion/styled": "^11.9.3",
     "@typescript-eslint/eslint-plugin": "^5.26.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
+    "firebase": "^9.9.3",
+    "firebaseui": "^6.0.1",
     "framer-motion": "^6.5.1",
     "next": "^12.2.3",
     "next-redux-wrapper": "^7.0.5",
