@@ -49,9 +49,9 @@ export const LogsCard: FunctionComponent<Props> = ({
       />
       <Flex
         align={"center"}
-        bgColor="yellow.50"
+        bgColor={sent ? "yellow.50" : "grey.70"}
         borderRadius={"999px"}
-        color={"black"}
+        color={sent ? "black" : "white"}
         height={"30px"}
         padding={"4px 12px"}
       >
