@@ -61,4 +61,6 @@ const LoginPage = () => {
   );
 };
 
+LoginPage.layout = AuthLayout;
+
 export default LoginPage;
