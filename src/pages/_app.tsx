@@ -9,7 +9,7 @@ import { CoreLayout } from "@/common/components/CoreLayout";
 import { ChakraFonts } from "@/common/components/CustomFont";
 import { PageHead } from "@/common/components/PageHead";
 
-import { store } from "@/pages/_store";
+import { store } from "@/store/store";
 import theme from "@/theme";
 
 // Configure Firebase Auth config
