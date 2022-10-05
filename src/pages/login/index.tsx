@@ -9,22 +9,6 @@ import { LoginView } from "@/modules/LoginView";
 import "firebase/compat/auth";
 import "firebaseui/dist/firebaseui.css";
 
-// Configure Firebase Auth config
-const authConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-};
-
-if (!firebase.apps.length) {
-  firebase.initializeApp(authConfig);
-} else {
-  firebase.app();
-}
-
 const LoginPage = () => {
   // Configure FirebaseUI
   const uiConfig = {
@@ -55,7 +39,7 @@ const LoginPage = () => {
           </Heading>
           <Text size="md">climb logger</Text>
         </VStack>
-        <LoginView firebaseAuth={firebase.auth()} uiConfig={uiConfig} />
+        <LoginView uiConfig={uiConfig} />
       </Box>
     </div>
   );
