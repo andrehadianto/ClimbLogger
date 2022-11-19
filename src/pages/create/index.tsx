@@ -8,9 +8,6 @@ const Create = () => {
         description="Home page description"
         name="Home"
       />
-      <section className="grid place-content-center h-full">
-        <span>Hello create</span>
-      </section>
     </div>
   );
 };

@@ -14,9 +14,9 @@
     "validate": "npm run prettier & npm run lint:eslint & npm run check-types & npm run build"
   },
   "dependencies": {
-    "@chakra-ui/react": "^2.2.4",
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
+    "@chakra-ui/react": "^2.4.1",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "@reduxjs/toolkit": "^1.8.5",
     "@typescript-eslint/eslint-plugin": "^5.26.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
