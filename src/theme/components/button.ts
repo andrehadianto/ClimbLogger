@@ -7,6 +7,7 @@ export const Button: ComponentStyleConfig = {
     textTransform: "uppercase",
     _disabled: {
       opacity: "40%",
+      background: "yellow.50 !important",
     },
     width: "fit-content",
     color: "black",
