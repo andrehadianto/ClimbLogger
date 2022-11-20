@@ -1,7 +1,14 @@
-import { Box, Divider, Flex, HStack, Text, VStack } from "@chakra-ui/react";
+import {
+  BoxProps,
+  Divider,
+  Flex,
+  HStack,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import { FunctionComponent } from "react";
 
-interface Props {
+interface Props extends BoxProps {
   grade: string;
   gym: string;
   date: string;
@@ -15,6 +22,7 @@ export const LogsCard: FunctionComponent<Props> = ({
   date,
   noAttempt,
   sent,
+  ...props
 }) => {
   return (
     <HStack
@@ -27,6 +35,7 @@ export const LogsCard: FunctionComponent<Props> = ({
       padding={"0px 20px"}
       spacing={"20px"}
       width={"full"}
+      {...props}
     >
       <Text color={"#2364A2"} fontWeight={"bold"} size="xl">
         {grade}

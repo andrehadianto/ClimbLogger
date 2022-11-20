@@ -24,11 +24,16 @@ export const Select = ({ label, options, errorMessage, ...props }: Props) => {
         <option disabled hidden selected color="red" value="">
           {label}
         </option>
-        {options.map((option) => (
-          <option key={option} value={option.toLowerCase()}>
-            {option}
-          </option>
-        ))}
+        {options &&
+          options.length > 0 &&
+          options.map((option) => (
+            <option
+              key={option}
+              value={option.toLowerCase().replaceAll(/\s/g, "_")}
+            >
+              {option}
+            </option>
+          ))}
       </ChakraSelect>
     </FormControl>
   );

@@ -1,7 +1,7 @@
-import { Box, Center, Flex, Link } from "@chakra-ui/react";
-import NextLink from "next/link";
+import { Center, Flex } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
+import { ChakraLink } from "../ChakraLink";
 import { HomeIcon, PlusIcon, UserIcon } from "../CustomIcon";
 
 const TABS = [
@@ -32,38 +32,46 @@ const Tabs = ({ icon, activeIcon, href, ...props }) => {
       bg={isActive && "grey.80"}
       borderRadius={"4px"}
       height={"40px"}
-      width={"40px"}
+      width={"80px"}
     >
-      <NextLink passHref href={href}>
-        <Link {...props}>{isActive ? activeIcon : icon}</Link>
-      </NextLink>
+      <ChakraLink href={href}>{isActive ? activeIcon : icon}</ChakraLink>
     </Center>
   );
 };
 
 export const TabsNavigation = () => {
+  const borderStyle = {
+    borderTopColor: "grey.0",
+    borderTop: "1px solid",
+  };
+
+  const position = {
+    position: "fixed" as const,
+    bottom: 0,
+  };
+
   return (
-    <Box
+    <Flex
+      {...borderStyle}
+      {...position}
       bgColor={"grey.100"}
-      borderTop={"grey.0"}
-      borderTopStyle={"solid"}
-      borderTopWidth={"1px"}
-      bottom={0}
       height={"64px"}
+      justify={"center"}
       padding={"4px 40px"}
-      position={"fixed"}
       width={"full"}
       zIndex={99}
     >
       <Flex
         alignItems={"center"}
         height={"full"}
-        justifyContent={"space-between"}
+        justifyContent={"space-around"}
+        maxW={"600px"}
+        w={"full"}
       >
         {TABS.map(({ icon, href, ...props }, index) => (
           <Tabs key={index} href={href} icon={icon} {...props} />
         ))}
       </Flex>
-    </Box>
+    </Flex>
   );
 };

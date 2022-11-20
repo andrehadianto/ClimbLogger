@@ -1,15 +1,32 @@
-import { Box, Button, Flex, VStack } from "@chakra-ui/react";
+import { Box, Button, Center, Flex, VStack } from "@chakra-ui/react";
 
-import { NumberInput } from "@/common/components/NumberInput";
 import { PageHead } from "@/common/components/PageHead";
-import { Select } from "@/common/components/Select";
-import { TextArea } from "@/common/components/TextArea";
-import { TextInput } from "@/common/components/TextInput";
 
-import { useCreate } from "@/modules/CreateView/createContext";
+import { AttemptInput } from "@/modules/create/AttemptInput";
+import { ColorInput } from "@/modules/create/ColorInput";
+import { DescriptionInput } from "@/modules/create/DescriptionInput";
+import { GradeInput } from "@/modules/create/GradeInput";
+import { GymInput } from "@/modules/create/GymInput";
+import { InstagramIframe } from "@/modules/create/InstagramIframe";
+import { InstagramInput } from "@/modules/create/InstagramInput";
+import { useCreate } from "@/modules/create/createContext";
 
 const Create = () => {
-  const { handleOnSubmit } = useCreate();
+  const {
+    instagram,
+    setInstagram,
+    description,
+    setDescription,
+    gym,
+    setGym,
+    color,
+    setColor,
+    grade,
+    setGrade,
+    attempt,
+    setAttempt,
+    handleOnSubmit,
+  } = useCreate();
   return (
     <div className="h-full">
       <PageHead
@@ -20,43 +37,13 @@ const Create = () => {
       <Box mt={6} px={5} py={5}>
         <form onSubmit={handleOnSubmit}>
           <VStack spacing={4}>
-            <Select
-              errorMessage=""
-              id="gym"
-              label="Select gym"
-              options={["Boruda", "Boulder Planet (Sembawang)", "Lighthouse"]}
-            />
-            <Select
-              errorMessage=""
-              id="grade"
-              label="Select grade"
-              options={["1", "2", "3"]}
-            />
-            <NumberInput
-              id="attempt"
-              label="No. of attempt(s)"
-              min={0}
-              placeholder="0"
-            />
-            <Select
-              errorMessage=""
-              id="color"
-              label="Select color"
-              options={["red", "green", "blue"]}
-            />
-            <TextInput
-              errorMessage=""
-              id="instagram"
-              label="Link to instagram"
-              placeholder="#"
-            />
-            <TextArea
-              errorMessage=""
-              id="description"
-              label="Description"
-              placeholder="The crux is at..."
-              type="textarea"
-            />
+            <InstagramIframe value={instagram} />
+            <GymInput setValue={setGym} value={gym} />
+            <GradeInput setValue={setGrade} value={grade} />
+            <AttemptInput setValue={setAttempt} value={attempt} />
+            <ColorInput setValue={setColor} value={color} />
+            <InstagramInput setValue={setInstagram} value={instagram} />
+            <DescriptionInput setValue={setDescription} value={description} />
           </VStack>
           <Flex mt={10}>
             <Button type="submit" w={"full"}>

@@ -32,7 +32,9 @@ export const CreateViewContextProvider = ({
   const [grade, setGrade] = useState<string>("");
   const [attempt, setAttempt] = useState<string>("");
   const [color, setColor] = useState<string>("");
-  const [instagram, setInstagram] = useState<string>("");
+  const [instagram, setInstagram] = useState<string>(
+    "https://www.instagram.com/p/ClEKcTUOhlu/"
+  );
   const [description, setDescription] = useState<string>("");
 
   const handleOnSubmit = async () => {

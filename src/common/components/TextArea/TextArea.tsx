@@ -28,7 +28,6 @@ export const TextArea = ({
       <Textarea
         errorBorderColor="red.70"
         isInvalid={!!errorMessage}
-        rows={5}
         type={type}
         {...props}
       />
