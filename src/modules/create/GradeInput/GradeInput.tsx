@@ -2,9 +2,8 @@ import { ChangeEvent, useState } from "react";
 
 import { Select } from "@/common/components/Select";
 
-import { useCreate } from "../createContext";
-
-import { GRADE_OPTION } from "./gradeData";
+import { GRADE_OPTION } from "@/modules/create/GradeInput/gradeData";
+import { useCreate } from "@/modules/create/createContext";
 
 interface Props {
   value: string;

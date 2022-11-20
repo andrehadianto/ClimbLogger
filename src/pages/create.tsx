@@ -7,6 +7,7 @@ import { ColorInput } from "@/modules/create/ColorInput";
 import { DescriptionInput } from "@/modules/create/DescriptionInput";
 import { GradeInput } from "@/modules/create/GradeInput";
 import { GymInput } from "@/modules/create/GymInput";
+import { InstagramIframe } from "@/modules/create/InstagramIframe";
 import { InstagramInput } from "@/modules/create/InstagramInput";
 import { useCreate } from "@/modules/create/createContext";
 
@@ -36,24 +37,7 @@ const Create = () => {
       <Box mt={6} px={5} py={5}>
         <form onSubmit={handleOnSubmit}>
           <VStack spacing={4}>
-            <Center
-              bg={"grey.90"}
-              border={"1px dashed"}
-              borderColor={"grey.40"}
-              borderRadius={"2xl"}
-              h={"440px"}
-              p={"1px"}
-              w={"full"}
-            >
-              {instagram && (
-                <iframe
-                  frameBorder="0"
-                  height="438"
-                  src={`${instagram}embed`}
-                  width="240"
-                />
-              )}
-            </Center>
+            <InstagramIframe value={instagram} />
             <GymInput setValue={setGym} value={gym} />
             <GradeInput setValue={setGrade} value={grade} />
             <AttemptInput setValue={setAttempt} value={attempt} />
