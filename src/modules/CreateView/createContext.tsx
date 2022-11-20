@@ -35,7 +35,7 @@ export const CreateViewContextProvider = ({
   const [instagram, setInstagram] = useState<string>("");
   const [description, setDescription] = useState<string>("");
 
-  const handleOnSubmit = () => {
+  const handleOnSubmit = async () => {
     //TODO: handle submit
   };
 
