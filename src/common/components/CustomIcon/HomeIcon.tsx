@@ -2,7 +2,7 @@ import { CustomIcon } from "./CustomIcon";
 import { CustomIconProps } from "./types";
 
 export const HomeIcon = ({ size, duotone, ...rest }: CustomIconProps) => (
-  <CustomIcon fill="#E5AE40" size="34px" viewBox="0 0 34 34" {...rest}>
+  <CustomIcon fill="#E5AE40" viewBox="0 0 34 34" {...rest}>
     {duotone && (
       <path
         d="M5.66669 14.1667L17 4.25L28.3334 14.1667L28.3334 28.3333H21.25V22.6667C21.25 21.5395 20.8023 20.4585 20.0052 19.6615C19.2082 18.8644 18.1272 18.4167 17 18.4167C15.8729 18.4167 14.7919 18.8644 13.9948 19.6615C13.1978 20.4585 12.75 21.5395 12.75 22.6667V28.3333H5.66669L5.66669 14.1667Z"

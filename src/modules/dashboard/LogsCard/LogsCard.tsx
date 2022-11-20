@@ -1,4 +1,5 @@
 import {
+  Box,
   BoxProps,
   Divider,
   Flex,
@@ -24,48 +25,45 @@ export const LogsCard: FunctionComponent<Props> = ({
   sent,
   ...props
 }) => {
+  const LogsDivider = (
+    <Divider
+      borderColor={"yellow.50"}
+      height={"42px"}
+      orientation="vertical"
+    />
+  );
+
   return (
-    <HStack
+    <Box
       border={"2px solid"}
       borderColor="yellow.50"
       borderRadius={"8px"}
-      height={"80px"}
-      justify={"space-between"}
-      maxWidth={"400px"}
-      padding={"0px 20px"}
-      spacing={"20px"}
-      width={"full"}
-      {...props}
+      minW={"350px"}
+      w={"full"}
     >
-      <Text color={"#2364A2"} fontWeight={"bold"} size="xl">
-        {grade}
-      </Text>
-      <Divider
-        borderColor={"yellow.50"}
-        height={"42px"}
-        orientation="vertical"
-      />
-      <VStack align={"flex-start"} spacing={0}>
-        <Text>{gym}</Text>
-        <Text color={"grey.50"} size={"sm"}>
-          {date}
+      <HStack gap={"20px"} height={"80px"} justify={"space-evenly"} {...props}>
+        <Text color={"#2364A2"} fontWeight={"bold"} size="xl">
+          {grade}
         </Text>
-      </VStack>
-      <Divider
-        borderColor={"yellow.50"}
-        height={"42px"}
-        orientation="vertical"
-      />
-      <Flex
-        align={"center"}
-        bgColor={sent ? "yellow.50" : "grey.70"}
-        borderRadius={"999px"}
-        color={sent ? "black" : "white"}
-        height={"30px"}
-        padding={"4px 12px"}
-      >
-        {sent ? `${noAttempt} - SENT` : `${noAttempt} - ATTE`}
-      </Flex>
-    </HStack>
+        {LogsDivider}
+        <VStack align={"flex-start"} spacing={0}>
+          <Text>{gym}</Text>
+          <Text color={"grey.50"} size={"sm"}>
+            {date}
+          </Text>
+        </VStack>
+        {LogsDivider}
+        <Flex
+          align={"center"}
+          bgColor={sent ? "yellow.50" : "grey.70"}
+          borderRadius={"999px"}
+          color={sent ? "black" : "white"}
+          height={"30px"}
+          padding={"4px 12px"}
+        >
+          {sent ? `${noAttempt} - SENT` : `${noAttempt} - ATTE`}
+        </Flex>
+      </HStack>
+    </Box>
   );
 };

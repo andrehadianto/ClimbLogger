@@ -26,6 +26,7 @@ export const colors: Colors = {
   red: {
     70: "#C8372D",
   },
+  bg: "#0B0B0D",
   black: "#000",
   white: "#fff",
 };

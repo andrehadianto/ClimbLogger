@@ -5,10 +5,10 @@ import { TabsNavigation } from "../TabsNavigation";
 export const CoreLayout = ({ children }) => {
   return (
     <Flex
-      bg={"grey.100"}
+      bg={"bg"}
       justifyContent={"center"}
       minH={"full"}
-      pb={16}
+      pb={11}
       position={"relative"}
     >
       <Box bg={"black"} maxW={"600px"} w={"full"}>
