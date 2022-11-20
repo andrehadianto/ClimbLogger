@@ -2,7 +2,7 @@ import { CustomIcon } from "./CustomIcon";
 import { CustomIconProps } from "./types";
 
 export const PlusIcon = ({ size, duotone, ...rest }: CustomIconProps) => (
-  <CustomIcon fill="#E5AE40" size="34px" viewBox="0 0 34 34" {...rest}>
+  <CustomIcon fill="#E5AE40" viewBox="0 0 34 34" {...rest}>
     {duotone && (
       <path
         d="M29.75 17C29.75 24.0416 24.0416 29.75 17 29.75C9.95837 29.75 4.25 24.0416 4.25 17C4.25 9.95837 9.95837 4.25 17 4.25C24.0416 4.25 29.75 9.95837 29.75 17Z"

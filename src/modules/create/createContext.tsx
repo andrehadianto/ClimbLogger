@@ -20,6 +20,8 @@ export interface CreateViewContextType {
   setInstagram: Dispatch<SetStateAction<string>>;
   description: string;
   setDescription: Dispatch<SetStateAction<string>>;
+  isSent: boolean;
+  setIsSent: Dispatch<SetStateAction<boolean>>;
   handleOnSubmit: () => void;
 }
 
@@ -36,6 +38,7 @@ export const CreateViewContextProvider = ({
     "https://www.instagram.com/p/ClEKcTUOhlu/"
   );
   const [description, setDescription] = useState<string>("");
+  const [isSent, setIsSent] = useState<boolean>(false);
 
   const handleOnSubmit = async () => {
     //TODO: handle submit
@@ -50,12 +53,14 @@ export const CreateViewContextProvider = ({
         color,
         instagram,
         description,
+        isSent,
         setGym,
         setGrade,
         setAttempt,
         setColor,
         setInstagram,
         setDescription,
+        setIsSent,
         handleOnSubmit,
       }}
     >

@@ -16,20 +16,14 @@ const Dashboard = () => {
           bgColor="grey.100"
           height={"34px"}
           justify={"space-between"}
-          padding={"0 24px"}
+          px={6}
+          py={0}
           width={"full"}
         >
           <Box>Climbing Log</Box>
           <FilterIcon />
         </Flex>
-        <VStack
-          height={"full"}
-          paddingLeft={"20px"}
-          paddingRight={"20px"}
-          paddingTop={"20px"}
-          spacing={"20px"}
-          width={"full"}
-        >
+        <VStack height={"full"} pt={5} px={5} spacing={5} width={"full"}>
           <LogsCard
             date="28 July 2022"
             grade="11"

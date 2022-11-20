@@ -2,7 +2,7 @@ import { CustomIcon } from "./CustomIcon";
 import { CustomIconProps } from "./types";
 
 export const UserIcon = ({ size, duotone, ...rest }: CustomIconProps) => (
-  <CustomIcon fill="#E5AE40" size="34px" viewBox="0 0 34 34" {...rest}>
+  <CustomIcon fill="#E5AE40" viewBox="0 0 34 34" {...rest}>
     {duotone && (
       <g opacity="0.4">
         <path d="M17.0714 29.7498C17.0476 29.7499 17.0238 29.75 17 29.75C16.9762 29.75 16.9524 29.7499 16.9286 29.7498C16.9527 29.7263 16.9765 29.7025 17 29.6784C17.0235 29.7025 17.0473 29.7263 17.0714 29.7498Z" />

@@ -16,7 +16,6 @@ import {
 
 interface Props extends NumberInputFieldProps {
   label: string;
-
   type?: string;
 }
 

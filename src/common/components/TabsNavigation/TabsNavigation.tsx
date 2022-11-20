@@ -6,18 +6,18 @@ import { HomeIcon, PlusIcon, UserIcon } from "../CustomIcon";
 
 const TABS = [
   {
-    icon: <HomeIcon />,
-    activeIcon: <HomeIcon duotone />,
+    icon: <HomeIcon height={28} width={28} />,
+    activeIcon: <HomeIcon duotone height={28} width={28} />,
     href: "/dashboard",
   },
   {
-    icon: <PlusIcon />,
-    activeIcon: <PlusIcon duotone />,
+    icon: <PlusIcon height={28} width={28} />,
+    activeIcon: <PlusIcon duotone height={28} width={28} />,
     href: "/create",
   },
   {
-    icon: <UserIcon />,
-    activeIcon: <UserIcon duotone />,
+    icon: <UserIcon height={28} width={28} />,
+    activeIcon: <UserIcon duotone height={28} width={28} />,
     href: "/user",
   },
 ];
@@ -40,11 +40,6 @@ const Tabs = ({ icon, activeIcon, href, ...props }) => {
 };
 
 export const TabsNavigation = () => {
-  const borderStyle = {
-    borderTopColor: "grey.0",
-    borderTop: "1px solid",
-  };
-
   const position = {
     position: "fixed" as const,
     bottom: 0,
@@ -52,10 +47,9 @@ export const TabsNavigation = () => {
 
   return (
     <Flex
-      {...borderStyle}
       {...position}
       bgColor={"grey.100"}
-      height={"64px"}
+      height={"56px"}
       justify={"center"}
       padding={"4px 40px"}
       width={"full"}
