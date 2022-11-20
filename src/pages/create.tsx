@@ -6,7 +6,7 @@ import { Select } from "@/common/components/Select";
 import { TextArea } from "@/common/components/TextArea";
 import { TextInput } from "@/common/components/TextInput";
 
-import { useCreate } from "@/modules/CreateView/createContext";
+import { useCreate } from "@/modules/create/createContext";
 
 const Create = () => {
   const { handleOnSubmit } = useCreate();

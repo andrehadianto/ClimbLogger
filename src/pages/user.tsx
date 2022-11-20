@@ -3,7 +3,6 @@ import { Flex, Text } from "@chakra-ui/react";
 import { ChakraLink } from "@/common/components/ChakraLink";
 import { PageHead } from "@/common/components/PageHead";
 
-
 const User = () => {
   return (
     <div className="h-full px-5 py-12">
