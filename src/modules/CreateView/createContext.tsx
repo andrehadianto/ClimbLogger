@@ -3,6 +3,7 @@ import {
   Dispatch,
   PropsWithChildren,
   SetStateAction,
+  useContext,
   useState,
 } from "react";
 
@@ -59,4 +60,13 @@ export const CreateViewContextProvider = ({
       {children}
     </CreateViewContext.Provider>
   );
+};
+
+export const useCreate = (): CreateViewContextType => {
+  const context = useContext(CreateViewContext);
+  if (!context) {
+    throw new Error("useCreate can only be used inside its context provider");
+  }
+
+  return context;
 };
