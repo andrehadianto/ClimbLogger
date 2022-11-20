@@ -1,4 +1,5 @@
 import {
+  BoxProps,
   Flex,
   FormControl,
   FormLabel,
@@ -10,11 +11,18 @@ interface Props extends SelectProps {
   label: string;
   options: string[];
   errorMessage: string;
+  wrapperProps?: BoxProps;
 }
 
-export const Select = ({ label, options, errorMessage, ...props }: Props) => {
+export const Select = ({
+  label,
+  options,
+  errorMessage,
+  wrapperProps,
+  ...props
+}: Props) => {
   return (
-    <FormControl>
+    <FormControl {...wrapperProps}>
       <Flex alignItems="center" justifyContent="space-between" w="full">
         <FormLabel color={"yellow.50"} htmlFor={props.id || undefined} mb={2}>
           {label}

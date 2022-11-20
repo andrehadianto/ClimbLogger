@@ -1,7 +1,8 @@
-import { Box, Button, Center, Flex, VStack } from "@chakra-ui/react";
+import { Box, Button, Flex, HStack, VStack } from "@chakra-ui/react";
 
 import { PageHead } from "@/common/components/PageHead";
 
+import { AscendInput } from "@/modules/create/AscendInput";
 import { AttemptInput } from "@/modules/create/AttemptInput";
 import { ColorInput } from "@/modules/create/ColorInput";
 import { DescriptionInput } from "@/modules/create/DescriptionInput";
@@ -25,6 +26,8 @@ const Create = () => {
     setGrade,
     attempt,
     setAttempt,
+    isSent,
+    setIsSent,
     handleOnSubmit,
   } = useCreate();
   return (
@@ -39,7 +42,10 @@ const Create = () => {
           <VStack spacing={4}>
             <InstagramIframe value={instagram} />
             <GymInput setValue={setGym} value={gym} />
-            <GradeInput setValue={setGrade} value={grade} />
+            <HStack spacing={5} w={"full"}>
+              <GradeInput setValue={setGrade} value={grade} />
+              <AscendInput setValue={setIsSent} value={isSent} />
+            </HStack>
             <AttemptInput setValue={setAttempt} value={attempt} />
             <ColorInput setValue={setColor} value={color} />
             <InstagramInput setValue={setInstagram} value={instagram} />

@@ -6,18 +6,18 @@ import { HomeIcon, PlusIcon, UserIcon } from "../CustomIcon";
 
 const TABS = [
   {
-    icon: <HomeIcon height={24} width={24} />,
-    activeIcon: <HomeIcon duotone height={24} width={24} />,
+    icon: <HomeIcon height={28} width={28} />,
+    activeIcon: <HomeIcon duotone height={28} width={28} />,
     href: "/dashboard",
   },
   {
-    icon: <PlusIcon height={24} width={24} />,
-    activeIcon: <PlusIcon duotone height={24} width={24} />,
+    icon: <PlusIcon height={28} width={28} />,
+    activeIcon: <PlusIcon duotone height={28} width={28} />,
     href: "/create",
   },
   {
-    icon: <UserIcon height={24} width={24} />,
-    activeIcon: <UserIcon duotone height={24} width={24} />,
+    icon: <UserIcon height={28} width={28} />,
+    activeIcon: <UserIcon duotone height={28} width={28} />,
     href: "/user",
   },
 ];
@@ -31,8 +31,8 @@ const Tabs = ({ icon, activeIcon, href, ...props }) => {
     <Center
       bg={isActive && "grey.80"}
       borderRadius={"4px"}
-      height={"32px"}
-      width={"60px"}
+      height={"40px"}
+      width={"80px"}
     >
       <ChakraLink href={href}>{isActive ? activeIcon : icon}</ChakraLink>
     </Center>
@@ -49,7 +49,7 @@ export const TabsNavigation = () => {
     <Flex
       {...position}
       bgColor={"grey.100"}
-      height={"44px"}
+      height={"56px"}
       justify={"center"}
       padding={"4px 40px"}
       width={"full"}

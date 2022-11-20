@@ -27,6 +27,7 @@ export const GradeInput = ({ value, setValue }: Props) => {
       label="Select grade"
       options={GRADE_OPTION[gym]}
       value={value}
+      wrapperProps={{ flex: 3 }}
       onChange={handleOnChange}
     />
   );
