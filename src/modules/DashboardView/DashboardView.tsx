@@ -41,15 +41,6 @@ export const DashboardView = () => {
           noAttempt={5}
           sent={false}
         />
-        <iframe
-          allowTransparency={true}
-          frameBorder="0"
-          height="1024"
-          scrolling="yes"
-          src="https://www.instagram.com/reel/ChC8NTqFa2U/embed/captioned?theme=dark"
-          style={{ color: "white" }}
-          width="100%"
-        ></iframe>
       </VStack>
     </VStack>
   );
