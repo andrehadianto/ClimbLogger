@@ -9,6 +9,8 @@ import { CoreLayout } from "@/common/components/CoreLayout";
 import { ChakraFonts } from "@/common/components/CustomFont";
 import { PageHead } from "@/common/components/PageHead";
 
+import { CreateViewContextProvider } from "@/modules/CreateView/createContext";
+
 import { store } from "@/store/store";
 import theme from "@/theme";
 
@@ -37,9 +39,11 @@ export const App = ({ Component, pageProps: { session, ...pageProps } }) => {
           />
           <PageHead />
         </Head>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <CreateViewContextProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </CreateViewContextProvider>
       </ChakraProvider>
     </Provider>
   );
