@@ -8,7 +8,7 @@ export const CoreLayout = ({ children }) => {
       bg={"bg"}
       justifyContent={"center"}
       minH={"full"}
-      pb={11}
+      pb={"56px"}
       position={"relative"}
     >
       <Box bg={"black"} maxW={"600px"} w={"full"}>

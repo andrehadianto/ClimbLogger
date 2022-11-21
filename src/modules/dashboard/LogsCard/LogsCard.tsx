@@ -26,11 +26,7 @@ export const LogsCard: FunctionComponent<Props> = ({
   ...props
 }) => {
   const LogsDivider = (
-    <Divider
-      borderColor={"yellow.50"}
-      height={"42px"}
-      orientation="vertical"
-    />
+    <Divider borderColor={"yellow.50"} height={"42px"} orientation="vertical" />
   );
 
   return (

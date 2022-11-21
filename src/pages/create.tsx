@@ -37,12 +37,12 @@ const Create = () => {
         description="Home page description"
         name="Home"
       />
-      <Box mt={6} px={5} py={5}>
+      <Box mt={"24px"} px={"20px"} py={"20px"}>
         <form onSubmit={handleOnSubmit}>
-          <VStack spacing={4}>
+          <VStack spacing={"16px"}>
             <InstagramIframe value={instagram} />
             <GymInput setValue={setGym} value={gym} />
-            <HStack spacing={5} w={"full"}>
+            <HStack spacing={"20px"} w={"full"}>
               <GradeInput setValue={setGrade} value={grade} />
               <AscendInput setValue={setIsSent} value={isSent} />
             </HStack>
@@ -51,7 +51,7 @@ const Create = () => {
             <InstagramInput setValue={setInstagram} value={instagram} />
             <DescriptionInput setValue={setDescription} value={description} />
           </VStack>
-          <Flex mt={10}>
+          <Flex mt={"40px"}>
             <Button type="submit" w={"full"}>
               Submit
             </Button>
