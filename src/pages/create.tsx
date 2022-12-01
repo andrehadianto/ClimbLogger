@@ -30,6 +30,12 @@ const Create = () => {
     setIsSent,
     handleOnSubmit,
   } = useCreate();
+
+  const handleOnClick = async () => {
+    await fetch("http://localhost:3000/api/users")
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  };
   return (
     <div className="h-full">
       <PageHead
@@ -38,6 +44,7 @@ const Create = () => {
         name="Home"
       />
       <Box mt={"24px"} px={"20px"} py={"20px"}>
+        <Button onClick={handleOnClick}>API</Button>
         <form onSubmit={handleOnSubmit}>
           <VStack spacing={"16px"}>
             <InstagramIframe value={instagram} />

@@ -1,4 +1,5 @@
 import { Box, Flex, VStack } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 
 import { FilterIcon } from "@/common/components/CustomIcon";
 import { PageHead } from "@/common/components/PageHead";
@@ -6,6 +7,17 @@ import { PageHead } from "@/common/components/PageHead";
 import { LogsCard } from "@/modules/dashboard/LogsCard";
 
 const Dashboard = () => {
+  // TODO: add types
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/logs")
+      .then((res) => res.json())
+      .then((res) => {
+        setData(res);
+      });
+  }, []);
+
   return (
     <div className="h-full">
       <PageHead description="Logs" name="Logs" />
@@ -24,20 +36,19 @@ const Dashboard = () => {
           <FilterIcon />
         </Flex>
         <VStack height={"full"} pt={5} px={5} spacing={5} width={"full"}>
-          <LogsCard
-            date="28 July 2022"
-            grade="11"
-            gym="Boulder Planet"
-            noAttempt={2}
-            sent={true}
-          />
-          <LogsCard
-            date="27 July 2022"
-            grade="12"
-            gym="Boulder Planet"
-            noAttempt={5}
-            sent={false}
-          />
+          {data &&
+            data.length > 0 &&
+            data.map((item) => (
+              <LogsCard
+                key={item.id}
+                date="28 July 2022"
+                grade={item.Grade}
+                gym={item.Gym}
+                noAttempt={item.Attempts}
+                sent={!!item.Sent}
+              />
+            ))}
+          {/* TODO: Add loading spinning bar. Add content skeleton  */}
         </VStack>
       </VStack>
     </div>
