@@ -1,31 +1,31 @@
-import { ChangeEvent, useState } from "react";
+import { Control, Controller } from "react-hook-form";
 
 import { Select } from "@/common/components/Select";
+
+import { Schema } from "../CreateFormContext";
 
 import { GYM_OPTION } from "./gymData";
 
 interface Props {
-  value: string;
-  setValue: (value: string) => void;
+  control: Control<Schema, any>;
 }
 
-export const GymInput = ({ value, setValue }: Props) => {
-  const [errorMessage, _] = useState<string>("");
+const FIELD_NAME = "gym";
 
-  const handleOnChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setValue(e.target.value || undefined);
-
-    //TODO: handle error message + validation
-  };
-
+export const GymInput = ({ control }: Props) => {
   return (
-    <Select
-      errorMessage={errorMessage}
-      id="gym"
-      label="Select gym"
-      options={GYM_OPTION}
-      value={value}
-      onChange={handleOnChange}
+    <Controller
+      control={control}
+      name={FIELD_NAME}
+      render={({ field, fieldState: { error } }) => (
+        <Select
+          errorMessage={error?.message}
+          id={FIELD_NAME}
+          label="Select gym"
+          options={GYM_OPTION}
+          {...field}
+        />
+      )}
     />
   );
 };

@@ -12,17 +12,27 @@ import {
   Input,
   Flex,
   FormLabel,
+  NumberInputProps,
 } from "@chakra-ui/react";
+import { ChangeEvent } from "react";
+import { RefCallBack } from "react-hook-form";
 
 interface Props extends NumberInputFieldProps {
   label: string;
-  type?: string;
+  ref: RefCallBack;
+  numberInputProps?: NumberInputProps;
 }
 
-export const NumberInput = ({ label, ...props }: Props) => {
+export const NumberInput = ({
+  label,
+  ref,
+  numberInputProps,
+  ...props
+}: Props) => {
   const { getIncrementButtonProps, getDecrementButtonProps, getInputProps } =
     useNumberInput({
       min: 0,
+      onChange: (_, valueAsNumber) => props.onChange(valueAsNumber as any),
     });
 
   // TODO: adjust dynamically based on width
@@ -35,18 +45,31 @@ export const NumberInput = ({ label, ...props }: Props) => {
           {label}
         </FormLabel>
       </Flex>
-      <ChakraNumberInput errorBorderColor="red.70">
+      <ChakraNumberInput errorBorderColor="red.70" {...numberInputProps}>
         <HStack>
           {isMobile && (
             <>
-              <Button {...getDecrementButtonProps()}>-</Button>
-              <Input {...getInputProps()} {...props} />
-              <Button {...getIncrementButtonProps()}>+</Button>
+              <Button {...getDecrementButtonProps()} ref={ref}>
+                -
+              </Button>
+              <Input
+                {...getInputProps()}
+                {...props}
+                ref={ref}
+                name={numberInputProps.name}
+              />
+              <Button {...getIncrementButtonProps()} ref={ref}>
+                +
+              </Button>
             </>
           )}
           {!isMobile && (
             <>
-              <NumberInputField {...props} />
+              <NumberInputField
+                {...props}
+                ref={ref}
+                name={numberInputProps.name}
+              />
               <NumberInputStepper>
                 <NumberIncrementStepper />
                 <NumberDecrementStepper />

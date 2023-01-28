@@ -1,34 +1,36 @@
-import { ChangeEvent, useState } from "react";
+import { Control, Controller, useFormContext } from "react-hook-form";
 
 import { Select } from "@/common/components/Select";
 
 import { GRADE_OPTION } from "@/modules/create/GradeInput/gradeData";
-import { useCreate } from "@/modules/create/createContext";
+
+import { Schema } from "../CreateFormContext";
 
 interface Props {
-  value: string;
-  setValue: (value: string) => void;
+  control: Control<Schema, any>;
 }
 
-export const GradeInput = ({ value, setValue }: Props) => {
-  const { gym } = useCreate();
-  const [errorMessage, _] = useState<string>("");
+const FIELD_NAME = "grade";
 
-  const handleOnChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setValue(e.target.value || undefined);
+export const GradeInput = ({ control }: Props) => {
+  const { watch } = useFormContext<Schema>();
 
-    //TODO: handle error message + validation
-  };
+  const gym = watch("gym");
 
   return (
-    <Select
-      errorMessage={errorMessage}
-      id="grade"
-      label="Select grade"
-      options={GRADE_OPTION[gym]}
-      value={value}
-      wrapperProps={{ flex: 3 }}
-      onChange={handleOnChange}
+    <Controller
+      control={control}
+      name={FIELD_NAME}
+      render={({ field, fieldState: { error } }) => (
+        <Select
+          errorMessage={error?.message}
+          id={FIELD_NAME}
+          label="Select grade"
+          options={GRADE_OPTION[gym]}
+          wrapperProps={{ flex: 3 }}
+          {...field}
+        />
+      )}
     />
   );
 };

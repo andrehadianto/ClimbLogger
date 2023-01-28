@@ -1,32 +1,31 @@
-import { ChangeEvent, useState } from "react";
+import { Control, Controller } from "react-hook-form";
 
 import { Select } from "@/common/components/Select";
+
+import { Schema } from "../CreateFormContext";
 
 import { COLOR_OPTION } from "./colorData";
 
 interface Props {
-  value: string;
-  setValue: (value: string) => void;
+  control: Control<Schema, any>;
 }
 
-export const ColorInput = ({ value, setValue }: Props) => {
-  const [errorMessage, _] = useState<string>("");
+const FIELD_NAME = "color";
 
-  const handleOnChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    //TODO: format string (replace whitespace with _, etc)
-    setValue(e.target.value || undefined);
-
-    //TODO: handle error message + validation
-  };
-
+export const ColorInput = ({ control }: Props) => {
   return (
-    <Select
-      errorMessage={errorMessage}
-      id="color"
-      label="Select color"
-      options={COLOR_OPTION}
-      value={value}
-      onChange={handleOnChange}
+    <Controller
+      control={control}
+      name={FIELD_NAME}
+      render={({ field, fieldState: { error } }) => (
+        <Select
+          errorMessage={error?.message}
+          id={FIELD_NAME}
+          label="Select color"
+          options={COLOR_OPTION}
+          {...field}
+        />
+      )}
     />
   );
 };

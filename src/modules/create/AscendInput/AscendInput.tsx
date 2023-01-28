@@ -1,25 +1,29 @@
-import { ChangeEvent } from "react";
+import { Control, Controller } from "react-hook-form";
 
 import { CheckboxInput } from "@/common/components/CheckboxInput";
 
+import { Schema } from "../CreateFormContext";
+
 interface Props {
-  value: boolean;
-  setValue: (value: boolean) => void;
+  control: Control<Schema, any>;
 }
 
-export const AscendInput = ({ value, setValue }: Props) => {
-  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.checked);
+const FIELD_NAME = "ascend";
 
-    //TODO: handle error message + validation
-  };
+export const AscendInput = ({ control }: Props) => {
   return (
-    <CheckboxInput
-      id="ascend"
-      isChecked={value}
-      label="Send"
-      wrapperProps={{ flex: 1 }}
-      onChange={handleOnChange}
+    <Controller
+      control={control}
+      name={FIELD_NAME}
+      render={({ field: { value, ...rest }, fieldState: { error } }) => (
+        <CheckboxInput
+          id={FIELD_NAME}
+          isChecked={value}
+          label="Send"
+          wrapperProps={{ flex: 1 }}
+          {...rest}
+        />
+      )}
     />
   );
 };

@@ -1,29 +1,29 @@
-import { ChangeEvent, useState } from "react";
+import { Control, Controller } from "react-hook-form";
 
 import { TextInput } from "@/common/components/TextInput";
 
+import { Schema } from "../CreateFormContext";
+
 interface Props {
-  value: string;
-  setValue: (value: string) => void;
+  control: Control<Schema, any>;
 }
 
-export const InstagramInput = ({ value, setValue }: Props) => {
-  const [errorMessage, _] = useState<string>("");
+const FIELD_NAME = "instagram";
 
-  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value || undefined);
-
-    //TODO: handle error message + validation
-  };
-
+export const InstagramInput = ({ control }: Props) => {
   return (
-    <TextInput
-      errorMessage={errorMessage}
-      id="instagram"
-      label="Link to instagram"
-      placeholder="#"
-      value={value}
-      onChange={handleOnChange}
+    <Controller
+      control={control}
+      name={FIELD_NAME}
+      render={({ field, fieldState: { error } }) => (
+        <TextInput
+          errorMessage={error?.message}
+          id={FIELD_NAME}
+          label="Link to instagram"
+          placeholder="#"
+          {...field}
+        />
+      )}
     />
   );
 };

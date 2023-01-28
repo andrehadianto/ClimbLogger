@@ -1,41 +1,33 @@
 import { Box, Button, Flex, HStack, VStack } from "@chakra-ui/react";
+import { useFormContext } from "react-hook-form";
 
 import { PageHead } from "@/common/components/PageHead";
 
 import { AscendInput } from "@/modules/create/AscendInput";
 import { AttemptInput } from "@/modules/create/AttemptInput";
 import { ColorInput } from "@/modules/create/ColorInput";
+import {
+  useCreateForm,
+  Schema as CreateFormSchema,
+} from "@/modules/create/CreateFormContext";
 import { DescriptionInput } from "@/modules/create/DescriptionInput";
 import { GradeInput } from "@/modules/create/GradeInput";
 import { GymInput } from "@/modules/create/GymInput";
 import { InstagramIframe } from "@/modules/create/InstagramIframe";
 import { InstagramInput } from "@/modules/create/InstagramInput";
-import { useCreate } from "@/modules/create/createContext";
 
 const Create = () => {
-  const {
-    instagram,
-    setInstagram,
-    description,
-    setDescription,
-    gym,
-    setGym,
-    color,
-    setColor,
-    grade,
-    setGrade,
-    attempt,
-    setAttempt,
-    isSent,
-    setIsSent,
-    handleOnSubmit,
-  } = useCreate();
+  const { handleSubmit, control, watch } = useFormContext<CreateFormSchema>();
+  const { handleOnSubmit } = useCreateForm();
 
   const handleOnClick = async () => {
     await fetch("http://localhost:3000/api/users")
       .then((response) => response.json())
       .then((data) => console.log(data));
   };
+
+  const instagramLink = watch("instagram");
+
   return (
     <div className="h-full">
       <PageHead
@@ -44,19 +36,19 @@ const Create = () => {
         name="Home"
       />
       <Box mt={"24px"} px={"20px"} py={"20px"}>
-        <Button onClick={handleOnClick}>API</Button>
-        <form onSubmit={handleOnSubmit}>
+        {/* <Button onClick={handleOnClick}>API</Button> */}
+        <form onSubmit={handleSubmit(handleOnSubmit)}>
           <VStack spacing={"16px"}>
-            <InstagramIframe value={instagram} />
-            <GymInput setValue={setGym} value={gym} />
+            <InstagramIframe value={instagramLink} />
+            <GymInput control={control} />
             <HStack spacing={"20px"} w={"full"}>
-              <GradeInput setValue={setGrade} value={grade} />
-              <AscendInput setValue={setIsSent} value={isSent} />
+              <GradeInput control={control} />
+              <AscendInput control={control} />
             </HStack>
-            <AttemptInput setValue={setAttempt} value={attempt} />
-            <ColorInput setValue={setColor} value={color} />
-            <InstagramInput setValue={setInstagram} value={instagram} />
-            <DescriptionInput setValue={setDescription} value={description} />
+            <AttemptInput control={control} />
+            <ColorInput control={control} />
+            <InstagramInput control={control} />
+            <DescriptionInput control={control} />
           </VStack>
           <Flex mt={"40px"}>
             <Button type="submit" w={"full"}>

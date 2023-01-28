@@ -1,27 +1,34 @@
-import { ChangeEvent } from "react";
+import { Control, Controller } from "react-hook-form";
 
 import { NumberInput } from "@/common/components/NumberInput";
 
+import { Schema } from "../CreateFormContext";
+
 interface Props {
-  value: string;
-  setValue: (value: string) => void;
+  control: Control<Schema, any>;
 }
 
-export const AttemptInput = ({ value, setValue }: Props) => {
-  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value || undefined);
+const FIELD_NAME = "attempt";
 
-    //TODO: handle error message + validation
-  };
-
+export const AttemptInput = ({ control }: Props) => {
   return (
-    <NumberInput
-      id="attempt"
-      label="No. of attempt(s)"
-      min={0}
-      placeholder="0"
-      value={value}
-      onChange={handleOnChange}
+    <Controller
+      control={control}
+      name={FIELD_NAME}
+      render={({
+        field: { ref, onChange, ...formFieldsProps },
+        fieldState: { error },
+      }) => (
+        <NumberInput
+          ref={ref}
+          id={FIELD_NAME}
+          label="No. of attempt(s)"
+          min={0}
+          numberInputProps={{ min: 0, onChange, ...formFieldsProps }}
+          placeholder="0"
+          onChange={onChange}
+        />
+      )}
     />
   );
 };

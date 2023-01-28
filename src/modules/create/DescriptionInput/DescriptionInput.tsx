@@ -1,30 +1,30 @@
-import { ChangeEvent, useState } from "react";
+import { Control, Controller } from "react-hook-form";
 
 import { TextArea } from "@/common/components/TextArea";
 
+import { Schema } from "../CreateFormContext";
+
 interface Props {
-  value: string;
-  setValue: (value: string) => void;
+  control: Control<Schema, any>;
 }
 
-export const DescriptionInput = ({ value, setValue }: Props) => {
-  const [errorMessage, _] = useState<string>("");
+const FIELD_NAME = "description";
 
-  const handleOnChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setValue(e.target.value || undefined);
-
-    //TODO: handle error message + validation
-  };
-
+export const DescriptionInput = ({ control }: Props) => {
   return (
-    <TextArea
-      errorMessage={errorMessage}
-      id="description"
-      label="Description"
-      placeholder="The crux is at..."
-      rows={5}
-      value={value}
-      onChange={handleOnChange}
+    <Controller
+      control={control}
+      name={FIELD_NAME}
+      render={({ field, fieldState: { error } }) => (
+        <TextArea
+          errorMessage={error?.message}
+          id={FIELD_NAME}
+          label="Description"
+          placeholder="The crux is at..."
+          rows={5}
+          {...field}
+        />
+      )}
     />
   );
 };
