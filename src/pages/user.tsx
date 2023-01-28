@@ -1,12 +1,12 @@
-import {Flex, Text} from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 
-import {ChakraLink} from "@/common/components/ChakraLink";
-import {PageHead} from "@/common/components/PageHead";
+import { ChakraLink } from "@/common/components/ChakraLink";
+import { PageHead } from "@/common/components/PageHead";
 
 const User = () => {
   return (
     <div className="h-full px-5 py-12">
-      <PageHead name="User Profile"/>
+      <PageHead name="User Profile" />
       <Flex flexDirection={"column"}>
         <Flex flexDirection={"column"} marginBottom={"40px"}>
           <Text fontWeight={"bold"} marginBottom={"8px"} size={"lg"}>

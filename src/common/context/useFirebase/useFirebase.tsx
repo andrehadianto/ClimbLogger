@@ -1,10 +1,18 @@
-import {createContext, MutableRefObject, PropsWithChildren, useContext, useEffect, useRef, useState,} from "react";
-import {useDispatch} from "react-redux";
+import {
+  createContext,
+  MutableRefObject,
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import { useDispatch } from "react-redux";
 
-import {uiConfig} from "./config";
+import { uiConfig } from "./config";
 
-import {auth} from "@/config/firebase";
-import {login} from "@/store/userSlice";
+import { auth } from "@/config/firebase";
+import { login } from "@/store/userSlice";
 
 export interface FirebaseContextType {
   firebaseWidgetRef?: MutableRefObject<any>;
@@ -13,10 +21,12 @@ export interface FirebaseContextType {
 const FirebaseContext = createContext<FirebaseContextType | null>(null);
 
 export const FirebaseContextProvider = ({
-                                          children,
-                                        }: PropsWithChildren<{}>) => {
+  children,
+}: PropsWithChildren<{}>) => {
   const dispatch = useDispatch();
-  const [firebaseUi, setFirebaseUi] = useState<typeof import("firebaseui") | null>(null);
+  const [firebaseUi, setFirebaseUi] = useState<
+    typeof import("firebaseui") | null
+  >(null);
 
   const firebaseWidgetRef = useRef(null);
 

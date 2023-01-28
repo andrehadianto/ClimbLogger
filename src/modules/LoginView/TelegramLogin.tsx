@@ -1,7 +1,7 @@
-import React, {useEffect, useRef} from 'react';
-import {useDispatch} from "react-redux";
+import React, { useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
 
-import {login} from "@/store/userSlice";
+import { login } from "@/store/userSlice";
 
 export interface TelegramUser {
   auth_date: number;
@@ -16,22 +16,22 @@ function TelegramLogin() {
   const dispatch = useDispatch();
 
   const handleTelegramResponse = (user: TelegramUser) => {
-    dispatch(login(user))
+    dispatch(login(user));
   };
 
   useEffect(() => {
     (window as any).telegramLoginWidgetCb = handleTelegramResponse;
 
-    const script = document.createElement('script');
-    script.src = 'https://telegram.org/js/telegram-widget.js?21';
+    const script = document.createElement("script");
+    script.src = "https://telegram.org/js/telegram-widget.js?21";
     script.async = true;
 
     const attributes = {
-      'data-telegram-login': "climb_logger_bot",
-      'data-size': 'large',
-      'data-request-access': 'write',
-      'data-lang': 'en',
-      'data-onauth': 'telegramLoginWidgetCb(user)',
+      "data-telegram-login": "climb_logger_bot",
+      "data-size": "large",
+      "data-request-access": "write",
+      "data-lang": "en",
+      "data-onauth": "telegramLoginWidgetCb(user)",
     };
 
     for (const [k, v] of Object.entries(attributes)) {
@@ -42,7 +42,7 @@ function TelegramLogin() {
 
     return () => {
       if (containerRef.current) {
-        containerRef.current.innerHTML = '';
+        containerRef.current.innerHTML = "";
       }
       if ((window as any).telegramLoginWidgetCb) {
         delete (window as any).telegramLoginWidgetCb;
@@ -50,7 +50,7 @@ function TelegramLogin() {
     };
   });
 
-  return <div ref={containerRef}/>;
+  return <div ref={containerRef} />;
 }
 
 export default TelegramLogin;

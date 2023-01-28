@@ -10,44 +10,43 @@ import {
   ModalOverlay,
   Text,
   useDisclosure,
-  VStack
+  VStack,
 } from "@chakra-ui/react";
-import {useRouter} from "next/router";
-import {useSelector} from "react-redux";
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
-import {AuthLayout} from "@/common/components/AuthLayout";
-import {PageHead} from "@/common/components/PageHead";
-import {FirebaseContextProvider} from "@/common/context/useFirebase";
+import { AuthLayout } from "@/common/components/AuthLayout";
+import { PageHead } from "@/common/components/PageHead";
+import { FirebaseContextProvider } from "@/common/context/useFirebase";
 
-import {LoginView} from "@/modules/LoginView";
+import { LoginView } from "@/modules/LoginView";
 import "firebaseui/dist/firebaseui.css";
 import TelegramLogin from "@/modules/LoginView/TelegramLogin";
 
-import {selectUser} from "@/store/userSlice";
-
+import { selectUser } from "@/store/userSlice";
 
 const LoginPage = () => {
   const user = useSelector(selectUser);
-  const {onClose} = useDisclosure();
+  const { onClose } = useDisclosure();
   const router = useRouter();
   return (
     <FirebaseContextProvider>
       <div className="h-full px-12 py-20">
-        <PageHead description="Login" name="Login"/>
+        <PageHead description="Login" name="Login" />
         <Box>
           <VStack className="py-10">
             <Heading fontWeight="hairline" size="h1">
               ALLEZ
             </Heading>
             <Text size="md">climb logger</Text>
-            <TelegramLogin/>
+            <TelegramLogin />
           </VStack>
-          <LoginView/>
+          <LoginView />
         </Box>
       </div>
       {user && (
         <Modal isOpen onClose={onClose}>
-          <ModalOverlay/>
+          <ModalOverlay />
           <ModalContent>
             <ModalHeader>Dumbass Alert</ModalHeader>
             <ModalBody>
