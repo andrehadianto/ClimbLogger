@@ -16,6 +16,7 @@ import { login } from "@/store/userSlice";
 
 export interface FirebaseContextType {
   firebaseWidgetRef?: MutableRefObject<any>;
+  logoutFirebase: () => Promise<void>;
 }
 
 const FirebaseContext = createContext<FirebaseContextType | null>(null);
@@ -45,6 +46,9 @@ export const FirebaseContextProvider = ({
 
     // Track the auth state to reset firebaseUi if the user signs out
     auth.onAuthStateChanged((user) => {
+      console.log("authstate");
+      console.log(user);
+
       if (user) {
         dispatch(
           login({
@@ -70,10 +74,13 @@ export const FirebaseContextProvider = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firebaseUi, uiConfig]);
 
+  const logoutFirebase = async () => await auth.signOut();
+
   return (
     <FirebaseContext.Provider
       value={{
         firebaseWidgetRef,
+        logoutFirebase,
       }}
     >
       {children}

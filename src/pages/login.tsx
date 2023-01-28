@@ -17,20 +17,20 @@ import { useSelector } from "react-redux";
 
 import { AuthLayout } from "@/common/components/AuthLayout";
 import { PageHead } from "@/common/components/PageHead";
-import { FirebaseContextProvider } from "@/common/context/useFirebase";
 
 import { LoginView } from "@/modules/LoginView";
-import "firebaseui/dist/firebaseui.css";
 import TelegramLogin from "@/modules/LoginView/TelegramLogin";
 
 import { selectUser } from "@/store/userSlice";
+
 
 const LoginPage = () => {
   const user = useSelector(selectUser);
   const { onClose } = useDisclosure();
   const router = useRouter();
+
   return (
-    <FirebaseContextProvider>
+    <>
       <div className="h-full px-12 py-20">
         <PageHead description="Login" name="Login" />
         <Box>
@@ -65,7 +65,7 @@ const LoginPage = () => {
           </ModalContent>
         </Modal>
       )}
-    </FirebaseContextProvider>
+    </>
   );
 };
 

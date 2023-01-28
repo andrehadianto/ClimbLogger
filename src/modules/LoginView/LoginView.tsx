@@ -1,9 +1,11 @@
-import "firebaseui/dist/firebaseui.css";
+import { Box } from "@chakra-ui/react";
 
 import { useFirebase } from "@/common/context/useFirebase";
+
+import "firebaseui/dist/firebaseui.css";
 
 export const LoginView = () => {
   const { firebaseWidgetRef } = useFirebase();
 
-  return <div ref={firebaseWidgetRef} />;
+  return <Box ref={firebaseWidgetRef} />;
 };

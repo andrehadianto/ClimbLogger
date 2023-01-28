@@ -1,9 +1,24 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Link, Text } from "@chakra-ui/react";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
 
 import { ChakraLink } from "@/common/components/ChakraLink";
 import { PageHead } from "@/common/components/PageHead";
+import { useFirebase } from "@/common/context/useFirebase";
+
+import { logout } from "@/store/userSlice";
 
 const User = () => {
+  const { logoutFirebase } = useFirebase();
+  const router = useRouter();
+  const dispatch = useDispatch();
+
+  const handleLogOut = async () => {
+    dispatch(logout());
+    await logoutFirebase();
+    router.push("/login");
+  };
+
   return (
     <div className="h-full px-5 py-12">
       <PageHead name="User Profile" />
@@ -17,11 +32,11 @@ const User = () => {
               Login user
             </Text>
           </ChakraLink>
-          <ChakraLink href={"#"}>
+          <Link onClick={handleLogOut}>
             <Text color={"red.70"} size={"md"}>
               Log out user
             </Text>
-          </ChakraLink>
+          </Link>
         </Flex>
         <Flex flexDirection={"column"}>
           <Text fontWeight={"bold"} marginBottom={"8px"} size={"lg"}>
