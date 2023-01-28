@@ -27,10 +27,11 @@
     "next-redux-wrapper": "^7.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.34.0",
+    "react-hook-form": "^7.42.1",
     "react-redux": "^8.0.2",
     "redux": "^4.2.0",
-    "sass": "^1.52.1"
+    "sass": "^1.52.1",
+    "zod": "^3.20.2"
   },
   "devDependencies": {
     "@tsconfig/next": "^1.0.2",
