@@ -22,13 +22,6 @@ const theme = extendTheme({
     Textarea,
     NumberInput,
   },
-  styles: {
-    global: {
-      body: {
-        bg: "black",
-      },
-    },
-  },
   fonts,
   colors,
   breakpoints,
