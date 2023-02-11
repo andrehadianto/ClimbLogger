@@ -1,3 +1,4 @@
+import { Box } from "@chakra-ui/react";
 import React, { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 
@@ -50,7 +51,7 @@ function TelegramLogin() {
     };
   });
 
-  return <div ref={containerRef} />;
+  return <Box ref={containerRef} />;
 }
 
 export default TelegramLogin;

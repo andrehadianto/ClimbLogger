@@ -9,24 +9,24 @@ export const InstagramIframe = ({ value }: Props) => {
 
   return (
     <Center
-      bg={"grey.90"}
-      border={"1px dashed"}
-      borderColor={"grey.40"}
-      borderRadius={"2xl"}
-      h={"440px"}
-      p={"1px"}
-      w={"full"}
+      border="1px dashed"
+      borderColor="grey.20"
+      borderRadius="2xl"
+      borderWidth="2px"
+      h="440px"
+      p="1px"
+      w="full"
     >
       {shouldRender ? (
         <iframe
           frameBorder="0"
-          height="438"
+          height="436"
           src={`${value}embed`}
           width="240"
         />
       ) : (
         // TODO: upload placeholder
-        <Text size={"md"}>Enter instagram link</Text>
+        <Text size="md">Enter instagram link</Text>
       )}
     </Center>
   );

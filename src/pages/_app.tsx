@@ -1,5 +1,3 @@
-import "@/styles/globals.scss";
-
 import { ChakraProvider } from "@chakra-ui/react";
 import Head from "next/head";
 import { Provider } from "react-redux";
@@ -7,13 +5,13 @@ import { Provider } from "react-redux";
 import { CoreLayout } from "@/common/components/CoreLayout";
 import { ChakraFonts } from "@/common/components/CustomFont";
 import { PageHead } from "@/common/components/PageHead";
-import { FirebaseContextProvider } from "@/common/context/useFirebase";
 
 import { CreateViewContextProvider } from "@/modules/create/CreateFormContext";
 
 import { store } from "@/store/store";
 import theme from "@/theme";
 
+import "@/styles/globals.scss";
 import "firebaseui/dist/firebaseui.css";
 
 export const App = ({ Component, pageProps: { session, ...pageProps } }) => {
@@ -29,13 +27,11 @@ export const App = ({ Component, pageProps: { session, ...pageProps } }) => {
           />
           <PageHead />
         </Head>
-        <FirebaseContextProvider>
-          <CreateViewContextProvider>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </CreateViewContextProvider>
-        </FirebaseContextProvider>
+        <CreateViewContextProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </CreateViewContextProvider>
       </ChakraProvider>
     </Provider>
   );

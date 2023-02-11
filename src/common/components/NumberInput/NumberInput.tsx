@@ -14,7 +14,6 @@ import {
   FormLabel,
   NumberInputProps,
 } from "@chakra-ui/react";
-import { ChangeEvent } from "react";
 import { RefCallBack } from "react-hook-form";
 
 interface Props extends NumberInputFieldProps {
@@ -32,6 +31,7 @@ export const NumberInput = ({
   const { getIncrementButtonProps, getDecrementButtonProps, getInputProps } =
     useNumberInput({
       min: 0,
+      value: 0,
       onChange: (_, valueAsNumber) => props.onChange(valueAsNumber as any),
     });
 

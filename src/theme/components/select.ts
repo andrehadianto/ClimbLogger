@@ -5,14 +5,9 @@ export const Select = defineStyleConfig({
   variants: {
     filled: {
       field: {
-        bg: "grey.90",
         rounded: "md",
         _focusVisible: {
-          bg: "grey.100",
           borderColor: "yellow.50",
-        },
-        _hover: {
-          bg: "grey.80",
         },
       },
       icon: {

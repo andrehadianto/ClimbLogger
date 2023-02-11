@@ -5,27 +5,27 @@ export const Heading: ComponentStyleConfig = {
     h1: {
       fontFamily: "Lato",
       fontSize: "80px",
-      lineHeigh: "88px",
+      lineHeight: "88px",
     },
     h2: {
       fontFamily: "Lato",
       fontSize: "60px",
-      lineHeigh: "66px",
+      lineHeight: "66px",
     },
     h3: {
       fontFamily: "Lato",
       fontSize: "48px",
-      lineHeigh: "52px",
+      lineHeight: "52px",
     },
     h4: {
       fontFamily: "Lato",
       fontSize: "36px",
-      lineHeigh: "40px",
+      lineHeight: "40px",
     },
     h5: {
       fontFamily: "Lato",
       fontSize: "32px",
-      lineHeigh: "40px",
+      lineHeight: "40px",
     },
   },
 };

@@ -46,9 +46,6 @@ export const FirebaseContextProvider = ({
 
     // Track the auth state to reset firebaseUi if the user signs out
     auth.onAuthStateChanged((user) => {
-      console.log("authstate");
-      console.log(user);
-
       if (user) {
         dispatch(
           login({

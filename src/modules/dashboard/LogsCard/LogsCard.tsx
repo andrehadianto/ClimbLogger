@@ -1,13 +1,20 @@
 import {
   Box,
   BoxProps,
-  Divider,
-  Flex,
+  Center,
+  Heading,
   HStack,
   Text,
   VStack,
 } from "@chakra-ui/react";
 import { FunctionComponent } from "react";
+
+import {
+  CrossIcon,
+  FilterIcon,
+  HomeIcon,
+  PlusIcon,
+} from "@/common/components/CustomIcon";
 
 interface Props extends BoxProps {
   grade: string;
@@ -25,40 +32,49 @@ export const LogsCard: FunctionComponent<Props> = ({
   sent,
   ...props
 }) => {
-  const LogsDivider = (
-    <Divider borderColor={"yellow.50"} height={"42px"} orientation="vertical" />
-  );
-
   return (
     <Box
-      border={"2px solid"}
-      borderColor="yellow.50"
+      bgColor="white"
       borderRadius={"8px"}
+      boxShadow="md"
+      h="40"
       minW={"350px"}
+      px="8"
+      py="4"
       w={"full"}
+      {...props}
     >
-      <HStack gap={"20px"} height={"80px"} justify={"space-evenly"} {...props}>
-        <Text color={"#2364A2"} fontWeight={"bold"} size="xl">
-          {grade}
-        </Text>
-        {LogsDivider}
-        <VStack align={"flex-start"} spacing={0}>
-          <Text>{gym}</Text>
-          <Text color={"grey.50"} size={"sm"}>
-            {date}
-          </Text>
+      <HStack align="center" h="full" justify="space-between" spacing="44px">
+        <VStack align="flex-start" spacing="3">
+          <HStack spacing="2">
+            <HomeIcon />
+            <Text fontWeight="700">{gym}</Text>
+          </HStack>
+          <HStack spacing="2">
+            <FilterIcon />
+            <Text fontWeight="700">{date}</Text>
+          </HStack>
+          <HStack spacing="2">
+            {sent ? <PlusIcon /> : <CrossIcon />}
+            <Text fontWeight="700">{`${noAttempt} Attempt(s)`}</Text>
+          </HStack>
         </VStack>
-        {LogsDivider}
-        <Flex
-          align={"center"}
-          bgColor={sent ? "yellow.50" : "grey.70"}
-          borderRadius={"999px"}
-          color={sent ? "black" : "white"}
-          height={"30px"}
-          padding={"4px 12px"}
-        >
-          {sent ? `${noAttempt} - SENT` : `${noAttempt} - ATTE`}
-        </Flex>
+        <VStack justify="space-between" w="100px">
+          {isNaN(parseInt(grade)) === false ? (
+            <Heading size="h1">{grade}</Heading>
+          ) : (
+            <Center h="88px" w="full">
+              <Box
+                bgColor="purple"
+                borderRadius="full"
+                h="8"
+                lineHeight="88px"
+                w="8"
+              />
+            </Center>
+          )}
+          <Box bgColor="coral" h="22px" w="full" />
+        </VStack>
       </HStack>
     </Box>
   );
