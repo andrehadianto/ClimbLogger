@@ -7,6 +7,7 @@ import { Heading } from "./components/heading";
 import { Input } from "./components/input";
 import { NumberInput } from "./components/numberInput";
 import { Select } from "./components/select";
+import { Tabs } from "./components/tabs";
 import { Text } from "./components/text";
 import { Textarea } from "./components/textarea";
 import { config } from "./config";
@@ -21,6 +22,7 @@ const theme = extendTheme({
     Select,
     Textarea,
     NumberInput,
+    Tabs,
   },
   fonts,
   colors,

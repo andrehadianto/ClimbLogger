@@ -32,6 +32,21 @@ export const LogsCard: FunctionComponent<Props> = ({
   sent,
   ...props
 }) => {
+  const statsData = [
+    {
+      icon: <HomeIcon fill="black" />,
+      text: gym,
+    },
+    {
+      icon: <FilterIcon fill="black" />,
+      text: date,
+    },
+    {
+      icon: sent ? <PlusIcon /> : <CrossIcon />,
+      text: noAttempt + " Attempt(s)",
+    },
+  ];
+
   return (
     <Box
       bgColor="white"
@@ -45,19 +60,13 @@ export const LogsCard: FunctionComponent<Props> = ({
       {...props}
     >
       <HStack align="center" h="full" justify="space-between" spacing="44px">
-        <VStack align="flex-start" spacing="3">
-          <HStack spacing="2">
-            <HomeIcon />
-            <Text fontWeight="700">{gym}</Text>
-          </HStack>
-          <HStack spacing="2">
-            <FilterIcon />
-            <Text fontWeight="700">{date}</Text>
-          </HStack>
-          <HStack spacing="2">
-            {sent ? <PlusIcon /> : <CrossIcon />}
-            <Text fontWeight="700">{`${noAttempt} Attempt(s)`}</Text>
-          </HStack>
+        <VStack align="flex-start" spacing="4">
+          {statsData.map(({ icon, text }) => (
+            <HStack key={text} spacing="2">
+              {icon}
+              <Text fontWeight="700">{text}</Text>
+            </HStack>
+          ))}
         </VStack>
         <VStack justify="space-between" w="100px">
           {isNaN(parseInt(grade)) === false ? (
