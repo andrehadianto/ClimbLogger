@@ -1,8 +1,8 @@
-import { Link } from "@chakra-ui/react";
+import { Link, type LinkProps as LinkFromChakraProps } from "@chakra-ui/react";
 import NextLink, { LinkProps } from "next/link";
 import { PropsWithChildren } from "react";
 
-interface ChakraLinkProps extends PropsWithChildren {
+interface ChakraLinkProps extends PropsWithChildren, LinkFromChakraProps {
   href: string;
   linkProps?: LinkProps;
 }
