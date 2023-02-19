@@ -10,11 +10,12 @@ import {
 import { FunctionComponent } from "react";
 
 import {
-  CrossIcon,
-  FilterIcon,
-  HomeIcon,
-  PlusIcon,
+  LocationIcon,
+  CalendarIcon,
+  FlagIcon,
 } from "@/common/components/CustomIcon";
+import { SendTag } from "@/common/components/SendTag";
+import { truncateText } from "@/common/functions/truncateText";
 
 interface Props extends BoxProps {
   grade: string;
@@ -34,15 +35,15 @@ export const LogsCard: FunctionComponent<Props> = ({
 }) => {
   const statsData = [
     {
-      icon: <HomeIcon fill="black" />,
-      text: gym,
+      icon: <LocationIcon color="black" />,
+      text: truncateText(gym),
     },
     {
-      icon: <FilterIcon fill="black" />,
+      icon: <CalendarIcon color="black" />,
       text: date,
     },
     {
-      icon: sent ? <PlusIcon /> : <CrossIcon />,
+      icon: <FlagIcon />,
       text: noAttempt + " Attempt(s)",
     },
   ];
@@ -54,11 +55,21 @@ export const LogsCard: FunctionComponent<Props> = ({
       boxShadow="md"
       h="40"
       minW={"350px"}
+      position="relative"
       px="8"
       py="4"
       w={"full"}
       {...props}
     >
+      <SendTag
+        borderBottomLeftRadius="0"
+        borderBottomRightRadius="0"
+        borderTopLeftRadius="0"
+        position="absolute"
+        right="0"
+        top="0"
+        unsent={!sent}
+      />
       <HStack align="center" h="full" justify="space-between" spacing="44px">
         <VStack align="flex-start" spacing="4">
           {statsData.map(({ icon, text }) => (
@@ -75,14 +86,13 @@ export const LogsCard: FunctionComponent<Props> = ({
             <Center h="88px" w="full">
               <Box
                 bgColor="purple"
-                borderRadius="full"
-                h="8"
+                borderRadius="md"
+                h="12"
                 lineHeight="88px"
-                w="8"
+                w="12"
               />
             </Center>
           )}
-          <Box bgColor="coral" h="22px" w="full" />
         </VStack>
       </HStack>
     </Box>
