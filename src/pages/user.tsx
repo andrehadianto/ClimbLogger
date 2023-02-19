@@ -8,7 +8,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
-import { FilterIcon, HomeIcon, UserIcon } from "@/common/components/CustomIcon";
+import { FilterIcon, FlagIcon, UserIcon } from "@/common/components/CustomIcon";
 import { FirebaseContextProvider } from "@/common/context/useFirebase";
 
 import { LogoutButton } from "@/modules/user/Logout";
@@ -30,7 +30,7 @@ const User = () => {
           </VStack>
           <HStack justify="space-evenly">
             <VStack spacing="2">
-              <VStack spacing="-2">
+              <VStack h="70px" spacing="-1" w="60px">
                 <UserIcon fill="black" height="30px" width="30px" />
                 <Text>sent</Text>
               </VStack>
@@ -39,8 +39,13 @@ const User = () => {
               </Text>
             </VStack>
             <VStack spacing="2">
-              <VStack spacing="-2">
-                <HomeIcon fill="black" height="30px" width="30px" />
+              <VStack h="70px" spacing="-1" w="60px">
+                <FlagIcon
+                  color="black"
+                  height="30px"
+                  strokeWidth="1.5"
+                  width="30px"
+                />
                 <Text>attempt</Text>
               </VStack>
               <Text fontWeight="600" size="lg">
@@ -48,9 +53,9 @@ const User = () => {
               </Text>
             </VStack>
             <VStack spacing="2">
-              <VStack spacing="-2">
+              <VStack h="70px" spacing="-1" w="60px">
                 <FilterIcon fill="black" height="30px" width="30px" />
-                <Text>grade</Text>
+                <Text textAlign="center">{`highest\ngrade`}</Text>
               </VStack>
               <Text fontWeight="600" size="lg">
                 2Q
