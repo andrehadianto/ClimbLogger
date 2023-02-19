@@ -33,9 +33,7 @@ const Log = () => {
     sent: true,
     grade: "11",
     description:
-      parseInt(logId.at(-1)) % 2 === 0
-        ? "start was too easy. hoping for a challenge but this 11 was so easy, I could have done it with my eyes closed."
-        : "",
+      "start was too easy. hoping for a challenge but this 11 was so easy, I could have done it with my eyes closed.",
     instagram: "https://www.google.com",
   };
   const statsData = [
