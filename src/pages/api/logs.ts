@@ -1,12 +1,13 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 
 import { db } from "@/config/firebase";
 
 const handler = async (_, res) => {
   const respond = [];
 
-  // TODO: add helper function for firestore related functions
-  const querySnapshot = await getDocs(collection(db, "logs"));
+  const querySnapshot = await getDocs(
+    query(collection(db, "logs"), orderBy("Timestamp", "desc")) // latest first
+  );
   querySnapshot.forEach((doc) => {
     respond.push({
       id: doc.id,

@@ -6,6 +6,7 @@ const handler = async (request, response) => {
   try {
     const { gym, grade, attempt, color, instagram, description, ascend } =
       JSON.parse(request.body);
+    const timeStamp = Date.now(); // in milliseconds
 
     const docRef = await addDoc(collection(db, "logs"), {
       Gym: gym,
@@ -15,6 +16,7 @@ const handler = async (request, response) => {
       Sent: ascend,
       VideoURL: instagram,
       Description: description,
+      Timestamp: timeStamp,
     });
 
     response.status(200).json({ id: docRef });

@@ -20,7 +20,6 @@ import { withOpacity } from "@/common/functions/withOpacity";
 import { LogsCard } from "@/modules/dashboard/LogsCard";
 
 const Dashboard = () => {
-  // TODO: add types
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -79,7 +78,6 @@ const Dashboard = () => {
                   <Spinner />
                 </>
               )}
-              {/* TODO: Add loading spinning bar. Add content skeleton  */}
             </VStack>
           </TabPanel>
         </TabPanels>
