@@ -1,7 +1,29 @@
+type GymName = string;
+type GymOptionDataType = GymName[];
+export const GYM_OPTION: GymOptionDataType = [
+  "Boulder Planet (Sembawang)",
+  "Boulder Planet (Taiseng)",
+  "Boruda",
+  "Fit Bloc (Kentridge)",
+  "Fit Bloc (Depot Height)",
+  "Lighthouse",
+  "BFF (Bukit Timah)",
+  "BFF (Bendemeer)",
+];
+
+export const GYM_MAPPING = {
+  "boulder_planet_(sembawang)": "Boulder Planet (Sembawang)",
+  "boulder_planet_(taiseng)": "Boulder Planet (Taiseng)",
+  boruda: "Boruda",
+  "fit_bloc_(kentridge)": "Fit Bloc (Kentridge)",
+  "fit_bloc_(depot_height)": "Fit Bloc (Depot Height)",
+  lighthouse: "Lighthouse",
+  "bff_(bukit_timah)": "BFF (Bukit Timah)",
+  "bff_(bendemeer)": "BFF (Bendemeer)",
+};
+
 type GradeType = string;
-
 type GradeDataType = Record<string, GradeType[]>;
-
 export const GRADE_OPTION: GradeDataType = {
   "boulder_planet_(sembawang)": [
     "1",
@@ -84,3 +106,16 @@ export const GRADE_OPTION: GradeDataType = {
     "14",
   ],
 };
+
+type ColorType = string;
+type ColorDataType = ColorType[];
+export const COLOR_OPTION: ColorDataType = [
+  "Red",
+  "Green",
+  "Blue",
+  "Cyan",
+  "Turquoise",
+  "Purple",
+  "White",
+  "Black",
+];

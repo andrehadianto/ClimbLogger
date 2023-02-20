@@ -1,10 +1,9 @@
 import { Control, Controller } from "react-hook-form";
 
 import { Select } from "@/common/components/Select";
+import { COLOR_OPTION } from "@/common/constants/common";
 
 import { Schema } from "../CreateFormContext";
-
-import { COLOR_OPTION } from "./colorData";
 
 interface Props {
   control: Control<Schema, any>;

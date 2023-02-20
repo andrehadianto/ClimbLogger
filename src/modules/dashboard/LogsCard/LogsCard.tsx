@@ -15,6 +15,7 @@ import {
   FlagIcon,
 } from "@/common/components/CustomIcon";
 import { SendTag } from "@/common/components/SendTag";
+import { GYM_MAPPING } from "@/common/constants/common";
 import { truncateText } from "@/common/functions/truncateText";
 
 interface Props extends BoxProps {
@@ -36,7 +37,7 @@ export const LogsCard: FunctionComponent<Props> = ({
   const statsData = [
     {
       icon: <LocationIcon color="black" />,
-      text: truncateText(gym),
+      text: truncateText(GYM_MAPPING[gym]),
     },
     {
       icon: <CalendarIcon color="black" />,
@@ -84,13 +85,17 @@ export const LogsCard: FunctionComponent<Props> = ({
             <Heading size="h1">{grade}</Heading>
           ) : (
             <Center h="88px" w="full">
-              <Box
-                bgColor="purple"
-                borderRadius="md"
-                h="12"
-                lineHeight="88px"
-                w="12"
-              />
+              {grade.toLowerCase() === "w" ? (
+                <Heading size="h1">W</Heading>
+              ) : (
+                <Box
+                  bgColor="purple"
+                  borderRadius="md"
+                  h="12"
+                  lineHeight="88px"
+                  w="12"
+                />
+              )}
             </Center>
           )}
         </VStack>

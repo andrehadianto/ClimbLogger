@@ -1,10 +1,9 @@
 import { Control, Controller } from "react-hook-form";
 
 import { Select } from "@/common/components/Select";
+import { GYM_OPTION } from "@/common/constants/common";
 
 import { Schema } from "../CreateFormContext";
-
-import { GYM_OPTION } from "./gymData";
 
 interface Props {
   control: Control<Schema, any>;

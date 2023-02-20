@@ -1,8 +1,7 @@
 import { Control, Controller, useFormContext } from "react-hook-form";
 
 import { Select } from "@/common/components/Select";
-
-import { GRADE_OPTION } from "@/modules/create/GradeInput/gradeData";
+import { GRADE_OPTION } from "@/common/constants/common";
 
 import { Schema } from "../CreateFormContext";
 

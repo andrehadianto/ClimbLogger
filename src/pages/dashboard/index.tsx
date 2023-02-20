@@ -27,7 +27,6 @@ const Dashboard = () => {
     fetch("/api/logs")
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
         setData(res);
       });
   }, []);
