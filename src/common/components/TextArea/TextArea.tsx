@@ -2,9 +2,13 @@ import {
   Flex,
   FormControl,
   FormLabel,
+  HStack,
+  Text,
   Textarea,
   TextareaProps,
 } from "@chakra-ui/react";
+
+import { AlertIcon } from "../CustomIcon";
 
 interface Props extends TextareaProps {
   label: string;
@@ -31,6 +35,16 @@ export const TextArea = ({
         type={type}
         {...props}
       />
+      {errorMessage && (
+        <Flex mt={1}>
+          <HStack spacing="1">
+            <AlertIcon color="#F6655A" height="22px" width="22px" />
+            <Text color="red.50" size="sm">
+              {errorMessage}
+            </Text>
+          </HStack>
+        </Flex>
+      )}
     </FormControl>
   );
 };

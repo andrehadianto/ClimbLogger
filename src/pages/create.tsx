@@ -2,6 +2,7 @@ import { Box, Button, Flex, HStack, VStack } from "@chakra-ui/react";
 import { useFormContext } from "react-hook-form";
 
 import { PageHead } from "@/common/components/PageHead";
+import { withOpacity } from "@/common/functions/withOpacity";
 
 import { AscendInput } from "@/modules/create/AscendInput";
 import { AttemptInput } from "@/modules/create/AttemptInput";
@@ -18,7 +19,7 @@ import { InstagramInput } from "@/modules/create/InstagramInput";
 
 const Create = () => {
   const { handleSubmit, control, watch } = useFormContext<CreateFormSchema>();
-  const { handleOnSubmit } = useCreateForm();
+  const { handleOnSubmit, loading } = useCreateForm();
 
   const handleOnClick = async () => {
     await fetch("http://localhost:3000/api/users")
@@ -35,7 +36,7 @@ const Create = () => {
         description="Home page description"
         name="Home"
       />
-      <Box mt={"24px"} px={"20px"} py={"20px"}>
+      <Box px={"20px"} py={"20px"}>
         {/* <Button onClick={handleOnClick}>API</Button> */}
         <form onSubmit={handleSubmit(handleOnSubmit)}>
           <VStack spacing={"16px"}>
@@ -51,7 +52,7 @@ const Create = () => {
             <DescriptionInput control={control} />
           </VStack>
           <Flex mt={"40px"}>
-            <Button type="submit" w={"full"}>
+            <Button isLoading={loading} type="submit" w={"full"}>
               Submit
             </Button>
           </Flex>

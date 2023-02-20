@@ -3,9 +3,13 @@ import {
   Flex,
   FormControl,
   FormLabel,
+  HStack,
   Select as ChakraSelect,
   SelectProps,
+  Text,
 } from "@chakra-ui/react";
+
+import { AlertIcon } from "../CustomIcon";
 
 interface Props extends SelectProps {
   label: string;
@@ -43,6 +47,16 @@ export const Select = ({
             </option>
           ))}
       </ChakraSelect>
+      {errorMessage && (
+        <Flex mt={1}>
+          <HStack spacing="1">
+            <AlertIcon color="#F6655A" height="22px" width="22px" />
+            <Text color="red.50" size="sm">
+              {errorMessage}
+            </Text>
+          </HStack>
+        </Flex>
+      )}
     </FormControl>
   );
 };

@@ -1,3 +1,4 @@
+export * from "./AlertIcon";
 export * from "./ArrowLeft";
 export * from "./CalendarIcon";
 export * from "./CrossIcon";

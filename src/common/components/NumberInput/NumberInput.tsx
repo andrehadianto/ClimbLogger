@@ -1,10 +1,6 @@
 import {
   FormControl,
   NumberInput as ChakraNumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
   NumberInputFieldProps,
   useNumberInput,
   Button,
@@ -13,30 +9,32 @@ import {
   Flex,
   FormLabel,
   NumberInputProps,
+  Text,
 } from "@chakra-ui/react";
 import { RefCallBack } from "react-hook-form";
+
+import { AlertIcon } from "../CustomIcon";
 
 interface Props extends NumberInputFieldProps {
   label: string;
   ref: RefCallBack;
+  errorMessage?: string;
   numberInputProps?: NumberInputProps;
 }
 
 export const NumberInput = ({
   label,
   ref,
+  errorMessage,
   numberInputProps,
   ...props
 }: Props) => {
   const { getIncrementButtonProps, getDecrementButtonProps, getInputProps } =
     useNumberInput({
       min: 0,
-      value: 0,
+      value: props.value as number,
       onChange: (_, valueAsNumber) => props.onChange(valueAsNumber as any),
     });
-
-  // TODO: adjust dynamically based on width
-  const isMobile = true;
 
   return (
     <FormControl>
@@ -47,37 +45,30 @@ export const NumberInput = ({
       </Flex>
       <ChakraNumberInput errorBorderColor="red.70" {...numberInputProps}>
         <HStack>
-          {isMobile && (
-            <>
-              <Button {...getDecrementButtonProps()} ref={ref}>
-                -
-              </Button>
-              <Input
-                {...getInputProps()}
-                {...props}
-                ref={ref}
-                name={numberInputProps.name}
-              />
-              <Button {...getIncrementButtonProps()} ref={ref}>
-                +
-              </Button>
-            </>
-          )}
-          {!isMobile && (
-            <>
-              <NumberInputField
-                {...props}
-                ref={ref}
-                name={numberInputProps.name}
-              />
-              <NumberInputStepper>
-                <NumberIncrementStepper />
-                <NumberDecrementStepper />
-              </NumberInputStepper>
-            </>
-          )}
+          <Button {...getDecrementButtonProps()} ref={ref}>
+            -
+          </Button>
+          <Input
+            {...getInputProps()}
+            {...props}
+            ref={ref}
+            name={numberInputProps.name}
+          />
+          <Button {...getIncrementButtonProps()} ref={ref}>
+            +
+          </Button>
         </HStack>
       </ChakraNumberInput>
+      {errorMessage && (
+        <Flex mt={1}>
+          <HStack spacing="1">
+            <AlertIcon color="#F6655A" height="22px" width="22px" />
+            <Text color="red.50" size="sm">
+              {errorMessage}
+            </Text>
+          </HStack>
+        </Flex>
+      )}
     </FormControl>
   );
 };
