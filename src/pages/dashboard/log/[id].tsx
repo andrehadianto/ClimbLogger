@@ -9,6 +9,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 import { ChakraLink } from "@/common/components/ChakraLink";
 import {
@@ -22,20 +23,48 @@ import { PageHead } from "@/common/components/PageHead";
 import { SendTag } from "@/common/components/SendTag";
 import { withOpacity } from "@/common/functions/withOpacity";
 
+const DEFAULT_DATA = {
+  gym: "Boulder Planet (Sembawang)",
+  date: "28 July 2022",
+  noAttempt: 5,
+  sent: true,
+  grade: "11",
+  description:
+    "start was too easy. hoping for a challenge but this 11 was so easy, I could have done it with my eyes closed.",
+  instagram: "https://www.google.com",
+};
+
 const Log = () => {
   const router = useRouter();
   const logId = router.query["id"] as string;
 
-  const data = {
-    gym: "Boulder Planet (Sembawang)",
-    date: "28 July 2022",
-    noAttempt: 5,
-    sent: true,
-    grade: "11",
-    description:
-      "start was too easy. hoping for a challenge but this 11 was so easy, I could have done it with my eyes closed.",
-    instagram: "https://www.google.com",
-  };
+  const [data, setData] = useState(DEFAULT_DATA);
+
+  useEffect(() => {
+    fetch(`/api/log/${logId}`)
+      .then((res) => res.json())
+      .then((res) => {
+        const {
+          Attempts: noAttempt,
+          Description: description,
+          Grade: grade,
+          Gym: gym,
+          Sent: sent,
+          Timestamp: date,
+          VideoURL: instagram,
+        } = res;
+        setData({
+          gym,
+          date,
+          noAttempt,
+          sent,
+          grade,
+          description,
+          instagram,
+        });
+      });
+  }, [logId]);
+
   const statsData = [
     {
       icon: <LocationIcon color="black" />,
