@@ -1,14 +1,27 @@
-import { Tag, TagLabel, TagLeftIcon, TagProps } from "@chakra-ui/react";
+import {
+  Skeleton,
+  Tag,
+  TagLabel,
+  TagLeftIcon,
+  TagProps,
+} from "@chakra-ui/react";
 
 import { DislikeIcon, LikeIcon } from "../CustomIcon";
 
 interface SendTagProps extends TagProps {
+  loading?: boolean;
   unsent?: boolean;
 }
 
-export const SendTag = ({ unsent = false, ...props }: SendTagProps) => {
-  const color = !unsent ? "green" : "red";
-  const icon = !unsent ? (
+export const SendTag = ({
+  loading,
+  unsent = false,
+  ...props
+}: SendTagProps) => {
+  const color = loading ? "yellow" : !unsent ? "green" : "red";
+  const icon = loading ? (
+    <></>
+  ) : !unsent ? (
     <LikeIcon color="green.50" />
   ) : (
     <DislikeIcon color="red.50" />
@@ -19,7 +32,9 @@ export const SendTag = ({ unsent = false, ...props }: SendTagProps) => {
       <TagLeftIcon alignItems="center" boxSize="12px">
         {icon}
       </TagLeftIcon>
-      <TagLabel>{label}</TagLabel>
+      <Skeleton isLoaded={!loading}>
+        <TagLabel>{label}</TagLabel>
+      </Skeleton>
     </Tag>
   );
 };

@@ -1,3 +1,16 @@
+type ColorType = string;
+type ColorDataType = ColorType[];
+export const COLOR_OPTION: ColorDataType = [
+  "Red",
+  "Green",
+  "Blue",
+  "Cyan",
+  "Turquoise",
+  "Purple",
+  "White",
+  "Black",
+];
+
 type GymName = string;
 type GymOptionDataType = GymName[];
 export const GYM_OPTION: GymOptionDataType = [
@@ -9,6 +22,8 @@ export const GYM_OPTION: GymOptionDataType = [
   "Lighthouse",
   "BFF (Bukit Timah)",
   "BFF (Bendemeer)",
+  "Boulder+ (Aperia)",
+  "Boulder+ (Chevron)",
 ];
 
 export const GYM_MAPPING = {
@@ -20,11 +35,33 @@ export const GYM_MAPPING = {
   lighthouse: "Lighthouse",
   "bff_(bukit_timah)": "BFF (Bukit Timah)",
   "bff_(bendemeer)": "BFF (Bendemeer)",
+  "boulder+_(aperia)": "Boulder+ (Aperia)",
+  "boulder+_(chevron)": "Boulder+ (Chevron)",
 };
 
 type GradeType = string;
 type GradeDataType = Record<string, GradeType[]>;
 export const GRADE_OPTION: GradeDataType = {
+  "boulder+_(aperia)": [
+    "white",
+    "yellow",
+    "red",
+    "blue",
+    "purple",
+    "green",
+    "pink",
+    "w",
+  ],
+  "boulder+_(chevron)": [
+    "white",
+    "yellow",
+    "red",
+    "blue",
+    "purple",
+    "green",
+    "pink",
+    "w",
+  ],
   "boulder_planet_(sembawang)": [
     "1",
     "2",
@@ -106,16 +143,3 @@ export const GRADE_OPTION: GradeDataType = {
     "14",
   ],
 };
-
-type ColorType = string;
-type ColorDataType = ColorType[];
-export const COLOR_OPTION: ColorDataType = [
-  "Red",
-  "Green",
-  "Blue",
-  "Cyan",
-  "Turquoise",
-  "Purple",
-  "White",
-  "Black",
-];

@@ -7,7 +7,10 @@ import {
   Image,
   Text,
   VStack,
+  useBoolean,
+  Skeleton,
 } from "@chakra-ui/react";
+import { DateTime } from "luxon";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -21,11 +24,13 @@ import {
 } from "@/common/components/CustomIcon";
 import { PageHead } from "@/common/components/PageHead";
 import { SendTag } from "@/common/components/SendTag";
+import { GYM_MAPPING } from "@/common/constants/common";
+import { MsToDate } from "@/common/functions/MsToDate";
 import { withOpacity } from "@/common/functions/withOpacity";
 
 const DEFAULT_DATA = {
   gym: "Boulder Planet (Sembawang)",
-  date: "28 July 2022",
+  date: 0,
   noAttempt: 5,
   sent: true,
   grade: "11",
@@ -39,8 +44,11 @@ const Log = () => {
   const logId = router.query["id"] as string;
 
   const [data, setData] = useState(DEFAULT_DATA);
+  const [loading, setLoading] = useBoolean(true);
 
   useEffect(() => {
+    if (!router.isReady) return;
+
     fetch(`/api/log/${logId}`)
       .then((res) => res.json())
       .then((res) => {
@@ -62,17 +70,19 @@ const Log = () => {
           description,
           instagram,
         });
+        setLoading.off();
       });
-  }, [logId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.isReady, logId]);
 
   const statsData = [
     {
       icon: <LocationIcon color="black" />,
-      text: data.gym,
+      text: GYM_MAPPING[data.gym],
     },
     {
       icon: <CalendarIcon color="black" />,
-      text: data.date,
+      text: MsToDate(data.date),
     },
     {
       icon: <FlagIcon />,
@@ -84,6 +94,17 @@ const Log = () => {
     },
   ];
 
+  const statsComponent = (text, href) =>
+    text ? (
+      <Text fontWeight="700">{text}</Text>
+    ) : (
+      <ChakraLink isExternal href={href ?? ""}>
+        <Text fontWeight="700" textDecoration="underline">
+          link
+        </Text>
+      </ChakraLink>
+    );
+
   return (
     <Box bgColor={withOpacity("grey.10", 35)} h="full">
       <PageHead description="A route" name="Route" />
@@ -94,6 +115,7 @@ const Log = () => {
         <SendTag
           borderRadius="0"
           bottom="0"
+          loading={loading}
           position="absolute"
           right="0"
           unsent={data.sent}
@@ -111,51 +133,61 @@ const Log = () => {
           >
             <VStack align="flex-start" spacing="4">
               {statsData.map(({ icon, text, href }) => (
-                <HStack key={text} spacing="2">
+                <HStack key={text} spacing="2" w="full">
                   {icon}
-                  {text ? (
-                    <Text fontWeight="700">{text}</Text>
-                  ) : (
-                    <ChakraLink isExternal href={href}>
-                      <Text fontWeight="700" textDecoration="underline">
-                        link
-                      </Text>
-                    </ChakraLink>
-                  )}
+                  <Skeleton isLoaded={!loading}>
+                    {statsComponent(text, href)}
+                  </Skeleton>
                 </HStack>
               ))}
             </VStack>
             <VStack justify="space-between" w="100px">
-              {isNaN(parseInt(data.grade)) === false ? (
-                <Heading size="h1">{data.grade}</Heading>
-              ) : (
-                <Center h="88px" w="full">
-                  <Box
-                    bgColor="purple"
-                    borderRadius="md"
-                    h="12"
-                    lineHeight="88px"
-                    w="12"
-                  />
-                </Center>
-              )}
+              <Skeleton isLoaded={!loading}>
+                {isNaN(parseInt(data.grade)) === false ? (
+                  <Heading fontFamily="Circular-Loom" size="h1">
+                    {data.grade.toUpperCase()}
+                  </Heading>
+                ) : data.grade.toLowerCase() === "w" ? (
+                  <Heading fontFamily="Circular-Loom" size="h1">
+                    W
+                  </Heading>
+                ) : (
+                  <Center h="88px" w="full">
+                    <Box
+                      bgColor="purple"
+                      borderRadius="md"
+                      h="12"
+                      lineHeight="88px"
+                      w="12"
+                    />
+                  </Center>
+                )}
+              </Skeleton>
             </VStack>
           </HStack>
           <Flex flexDir="column" w="full">
-            <Text textAlign="left">
-              {data.description && data.description.length > 0 ? (
-                <>
-                  <Box as="span" fontWeight="700">
-                    {`${data.description.split(" ")[0]} `}
+            {loading ? (
+              <VStack>
+                {[1, 2, 3].map((i) => (
+                  <Skeleton key={i} h="30px" w="full" />
+                ))}
+              </VStack>
+            ) : (
+              <Text textAlign="left">
+                {data.description && data.description.length > 0 ? (
+                  <>
+                    <Box as="span" fontWeight="700">
+                      {`${data.description.split(" ")[0]} `}
+                    </Box>
+                    {data.description.split(" ").slice(1).join(" ")}
+                  </>
+                ) : (
+                  <Box as="span" color="grey.40">
+                    no description
                   </Box>
-                  {data.description.split(" ").slice(1).join(" ")}
-                </>
-              ) : (
-                <Box as="span" color="grey.40">
-                  no description
-                </Box>
-              )}
-            </Text>
+                )}
+              </Text>
+            )}
             <Text color="grey.50" textAlign="right">
               Edit
             </Text>

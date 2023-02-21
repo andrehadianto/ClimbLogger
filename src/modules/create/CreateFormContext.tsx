@@ -1,5 +1,6 @@
 import { useToast } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/router";
 import { createContext, PropsWithChildren, useContext, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import * as z from "zod";
@@ -38,6 +39,7 @@ const CreateViewContext = createContext<CreateViewContextType | null>(null);
 export const CreateViewContextProvider = ({
   children,
 }: PropsWithChildren<{}>) => {
+  const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const toast = useToast();
 
@@ -55,13 +57,15 @@ export const CreateViewContextProvider = ({
       body: JSON.stringify(body),
     });
 
+    methods.reset();
+    setLoading(false);
+
     if (res.status === 200) {
+      router.replace("/dashboard");
       toast(CREATE_LOG_SUCCESS);
     } else {
       toast(CREATE_LOG_FAIL);
     }
-    methods.reset();
-    setLoading(false);
   };
 
   return (

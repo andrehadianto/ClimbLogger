@@ -16,12 +16,13 @@ import {
 } from "@/common/components/CustomIcon";
 import { SendTag } from "@/common/components/SendTag";
 import { GYM_MAPPING } from "@/common/constants/common";
+import { MsToDate } from "@/common/functions/MsToDate";
 import { truncateText } from "@/common/functions/truncateText";
 
 interface Props extends BoxProps {
   grade: string;
   gym: string;
-  date: string;
+  date: number;
   noAttempt: number;
   sent: boolean;
 }
@@ -41,7 +42,7 @@ export const LogsCard: FunctionComponent<Props> = ({
     },
     {
       icon: <CalendarIcon color="black" />,
-      text: date,
+      text: MsToDate(date),
     },
     {
       icon: <FlagIcon />,
@@ -82,14 +83,18 @@ export const LogsCard: FunctionComponent<Props> = ({
         </VStack>
         <VStack justify="space-between" w="100px">
           {isNaN(parseInt(grade)) === false ? (
-            <Heading size="h1">{grade}</Heading>
+            <Heading fontFamily="Circular-Loom" size="h1">
+              {grade}
+            </Heading>
           ) : (
             <Center h="88px" w="full">
               {grade.toLowerCase() === "w" ? (
-                <Heading size="h1">W</Heading>
+                <Heading fontFamily="Circular-Loom" size="h1">
+                  W
+                </Heading>
               ) : (
                 <Box
-                  bgColor="purple"
+                  bgColor={grade}
                   borderRadius="md"
                   h="12"
                   lineHeight="88px"

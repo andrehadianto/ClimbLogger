@@ -27,6 +27,7 @@ const Dashboard = () => {
       .then((res) => res.json())
       .then((res) => {
         setData(res);
+        console.log(res);
       });
   }, []);
 
@@ -65,7 +66,7 @@ const Dashboard = () => {
                     href={`dashboard/log/${item.id}`}
                   >
                     <LogsCard
-                      date="28 July 2022"
+                      date={item.Timestamp}
                       grade={item.Grade}
                       gym={item.Gym}
                       noAttempt={item.Attempts}
