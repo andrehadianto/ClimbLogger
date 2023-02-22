@@ -20,6 +20,7 @@ import { withOpacity } from "@/common/functions/withOpacity";
 import { LogsCard } from "@/modules/dashboard/LogsCard";
 
 const Dashboard = () => {
+  localStorage.setItem("chakra-ui-color-mode", "light");
   const [data, setData] = useState([]);
 
   useEffect(() => {

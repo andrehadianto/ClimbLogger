@@ -3,8 +3,6 @@ import { Box, Flex } from "@chakra-ui/react";
 import { TabsNavigation } from "../TabsNavigation";
 
 export const CoreLayout = ({ children }) => {
-  localStorage.setItem("chakra-ui-color-mode", "light");
-
   return (
     <Flex
       justifyContent={"center"}
