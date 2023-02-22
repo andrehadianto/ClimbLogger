@@ -15,12 +15,13 @@ import { useEffect, useState } from "react";
 import { ChakraLink } from "@/common/components/ChakraLink";
 import { FilterIcon } from "@/common/components/CustomIcon";
 import { PageHead } from "@/common/components/PageHead";
+import { set } from "@/common/functions/localStorage";
 import { withOpacity } from "@/common/functions/withOpacity";
 
 import { LogsCard } from "@/modules/dashboard/LogsCard";
 
 const Dashboard = () => {
-  window.localStorage.setItem("chakra-ui-color-mode", "light");
+  set("chakra-ui-color-mode", "light");
 
   const [data, setData] = useState([]);
 
