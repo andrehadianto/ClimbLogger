@@ -2,6 +2,7 @@ import {
   Box,
   BoxProps,
   Center,
+  Flex,
   Heading,
   HStack,
   Text,
@@ -15,9 +16,8 @@ import {
   FlagIcon,
 } from "@/common/components/CustomIcon";
 import { SendTag } from "@/common/components/SendTag";
-import { GYM_MAPPING } from "@/common/constants/common";
+import { GYM_MAPPING } from "@/common/constants/gym";
 import { MsToDate } from "@/common/functions/MsToDate";
-import { truncateText } from "@/common/functions/truncateText";
 
 interface Props extends BoxProps {
   grade: string;
@@ -38,7 +38,7 @@ export const LogsCard: FunctionComponent<Props> = ({
   const statsData = [
     {
       icon: <LocationIcon color="black" />,
-      text: truncateText(GYM_MAPPING[gym]),
+      text: GYM_MAPPING[gym],
     },
     {
       icon: <CalendarIcon color="black" />,
@@ -53,14 +53,14 @@ export const LogsCard: FunctionComponent<Props> = ({
   return (
     <Box
       bgColor="white"
-      borderRadius={"8px"}
+      borderRadius="8px"
       boxShadow="md"
       h="40"
-      minW={"350px"}
+      minW="350px"
       position="relative"
       px="8"
-      py="4"
-      w={"full"}
+      py="6"
+      w="full"
       {...props}
     >
       <SendTag
@@ -77,14 +77,14 @@ export const LogsCard: FunctionComponent<Props> = ({
           {statsData.map(({ icon, text }) => (
             <HStack key={text} spacing="2">
               {icon}
-              <Text fontWeight="700">{text}</Text>
+              <Text size="sm">{text}</Text>
             </HStack>
           ))}
         </VStack>
         <VStack justify="space-between" w="100px">
           {isNaN(parseInt(grade)) === false ? (
             <Heading fontFamily="Circular-Loom" size="h1">
-              {grade}
+              {grade.toUpperCase()}
             </Heading>
           ) : (
             <Center h="88px" w="full">

@@ -57,13 +57,14 @@ const Dashboard = () => {
         </Flex>
         <TabPanels>
           <TabPanel>
-            <VStack height="full" pt={5} px={5} spacing={5} width="full">
+            <VStack height="full" pt={5} spacing={5} width="full">
               {data && data.length > 0 ? (
                 data.map((item) => (
                   <ChakraLink
                     key={item.id}
                     _hover={{ textDecoration: "none" }}
                     href={`dashboard/log/${item.id}`}
+                    width="full"
                   >
                     <LogsCard
                       date={item.Timestamp}

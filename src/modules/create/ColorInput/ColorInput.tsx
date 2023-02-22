@@ -1,7 +1,7 @@
 import { Control, Controller } from "react-hook-form";
 
 import { Select } from "@/common/components/Select";
-import { COLOR_OPTION } from "@/common/constants/common";
+import { COLOR_OPTION } from "@/common/constants/color";
 
 import { Schema } from "../CreateFormContext";
 

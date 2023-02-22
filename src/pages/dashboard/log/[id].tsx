@@ -10,7 +10,6 @@ import {
   useBoolean,
   Skeleton,
 } from "@chakra-ui/react";
-import { DateTime } from "luxon";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -24,7 +23,7 @@ import {
 } from "@/common/components/CustomIcon";
 import { PageHead } from "@/common/components/PageHead";
 import { SendTag } from "@/common/components/SendTag";
-import { GYM_MAPPING } from "@/common/constants/common";
+import { GYM_MAPPING } from "@/common/constants/gym";
 import { MsToDate } from "@/common/functions/MsToDate";
 import { withOpacity } from "@/common/functions/withOpacity";
 
@@ -96,10 +95,10 @@ const Log = () => {
 
   const statsComponent = (text, href) =>
     text ? (
-      <Text fontWeight="700">{text}</Text>
+      <Text size="sm">{text}</Text>
     ) : (
       <ChakraLink isExternal href={href ?? ""}>
-        <Text fontWeight="700" textDecoration="underline">
+        <Text size="sm" textDecoration="underline">
           link
         </Text>
       </ChakraLink>

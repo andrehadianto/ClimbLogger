@@ -2,7 +2,6 @@ import { Box, Button, Flex, HStack, VStack } from "@chakra-ui/react";
 import { useFormContext } from "react-hook-form";
 
 import { PageHead } from "@/common/components/PageHead";
-import { withOpacity } from "@/common/functions/withOpacity";
 
 import { AscendInput } from "@/modules/create/AscendInput";
 import { AttemptInput } from "@/modules/create/AttemptInput";
