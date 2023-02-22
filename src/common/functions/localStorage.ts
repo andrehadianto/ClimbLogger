@@ -13,7 +13,10 @@ export const get = (key: string) => {
   }
 };
 export const set = (key: string, value: unknown) => {
-  localStorage.setItem(key, typeof value === 'string' ? value : JSON.stringify(value));
+  localStorage.setItem(
+    key,
+    typeof value === "string" ? value : JSON.stringify(value)
+  );
 };
 export const del = (key: string) => {
   localStorage.removeItem(key);
@@ -29,10 +32,10 @@ export const getFileAsBase64 = async (file) =>
   });
 
 export const getBase64AsFile = (base64) => {
-  const base64Parts = base64.split(',');
-  const fileFormat = base64Parts[0].split(';')[1];
+  const base64Parts = base64.split(",");
+  const fileFormat = base64Parts[0].split(";")[1];
   const fileContent = base64Parts[1];
-  const file = new File([fileContent], 'file', { type: fileFormat });
+  const file = new File([fileContent], "file", { type: fileFormat });
   return file;
 };
 
