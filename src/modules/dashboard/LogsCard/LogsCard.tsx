@@ -72,7 +72,12 @@ export const LogsCard: FunctionComponent<Props> = ({
         top="0"
         unsent={!sent}
       />
-      <HStack align="center" h="full" justify="space-between">
+      <HStack
+        align="center"
+        h="full"
+        justify="space-between"
+        position="relative"
+      >
         <VStack align="flex-start" spacing="4">
           {statsData.map(({ icon, text }) => (
             <HStack key={text} spacing="2">
@@ -83,7 +88,13 @@ export const LogsCard: FunctionComponent<Props> = ({
             </HStack>
           ))}
         </VStack>
-        <VStack justify="space-between" w="100px">
+        <VStack
+          bottom="-6px"
+          justify="space-between"
+          position="absolute"
+          right="0"
+          w="100px"
+        >
           {isNaN(parseInt(grade)) === false ? (
             <Heading size="h1">{grade.toUpperCase()}</Heading>
           ) : (
