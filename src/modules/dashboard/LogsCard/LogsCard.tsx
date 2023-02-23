@@ -72,7 +72,7 @@ export const LogsCard: FunctionComponent<Props> = ({
         top="0"
         unsent={!sent}
       />
-      <HStack align="center" h="full" justify="space-between" spacing="44px">
+      <HStack align="center" h="full" justify="space-between">
         <VStack align="flex-start" spacing="4">
           {statsData.map(({ icon, text }) => (
             <HStack key={text} spacing="2">
