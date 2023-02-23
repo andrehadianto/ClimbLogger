@@ -5,7 +5,7 @@ interface Props {
 }
 
 export const InstagramIframe = ({ value }: Props) => {
-  const shouldRender = value.startsWith("https://www.instagram.com/p/");
+  const shouldRender = value.startsWith("https://www.instagram.com/");
 
   return (
     <Center
@@ -21,12 +21,14 @@ export const InstagramIframe = ({ value }: Props) => {
         <iframe
           frameBorder="0"
           height="436"
-          src={`${value}embed`}
+          src={value}
           width="240"
         />
       ) : (
         // TODO: upload placeholder
-        <Text size="md">Enter instagram link</Text>
+        <Text color="grey.60" size="md">
+          Enter instagram link
+        </Text>
       )}
     </Center>
   );

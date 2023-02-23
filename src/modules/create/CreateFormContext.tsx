@@ -1,7 +1,12 @@
 import { useToast } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/router";
-import { createContext, PropsWithChildren, useContext, useState } from "react";
+import {
+  createContext,
+  PropsWithChildren,
+  useContext,
+  useState,
+} from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import * as z from "zod";
 
@@ -27,7 +32,7 @@ const DEFAULT_VALUES = {
   grade: "",
   attempt: 0,
   color: "",
-  instagram: "https://www.instagram.com/p/ClEKcTUOhlu/",
+  instagram: "",
   description: "",
   ascend: false,
 };
