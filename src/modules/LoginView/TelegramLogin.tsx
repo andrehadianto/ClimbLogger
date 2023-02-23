@@ -35,7 +35,15 @@ function TelegramLogin() {
       "data-onauth": "telegramLoginWidgetCb(user)",
     };
 
-    for (const [k, v] of Object.entries(attributes)) {
+    const stg_attributes = {
+      "data-telegram-login": "ClimbLoggerStg_bot",
+      "data-size": "large",
+      "data-request-access": "write",
+      "data-lang": "en",
+      "data-onauth": "telegramLoginWidgetCb(user)",
+    }
+
+    for (const [k, v] of Object.entries(stg_attributes)) {
       v !== undefined && script.setAttribute(k, `${v}`);
     }
 
