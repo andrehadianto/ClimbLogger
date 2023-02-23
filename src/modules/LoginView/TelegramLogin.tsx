@@ -13,6 +13,9 @@ export interface TelegramUser {
 }
 
 function TelegramLogin() {
+  const TELEGRAM_LOGIN_BOT =
+    process.env.NEXT_PUBLIC_TELEGRAM_LOGIN_BOT ?? "climb_logger_bot";
+
   const containerRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
 
@@ -28,22 +31,14 @@ function TelegramLogin() {
     script.async = true;
 
     const attributes = {
-      "data-telegram-login": "climb_logger_bot",
+      "data-telegram-login": TELEGRAM_LOGIN_BOT,
       "data-size": "large",
       "data-request-access": "write",
       "data-lang": "en",
       "data-onauth": "telegramLoginWidgetCb(user)",
     };
 
-    const stg_attributes = {
-      "data-telegram-login": "ClimbLoggerStg_bot",
-      "data-size": "large",
-      "data-request-access": "write",
-      "data-lang": "en",
-      "data-onauth": "telegramLoginWidgetCb(user)",
-    }
-
-    for (const [k, v] of Object.entries(stg_attributes)) {
+    for (const [k, v] of Object.entries(attributes)) {
       v !== undefined && script.setAttribute(k, `${v}`);
     }
 
