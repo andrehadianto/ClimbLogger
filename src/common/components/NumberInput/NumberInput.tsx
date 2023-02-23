@@ -39,7 +39,7 @@ export const NumberInput = ({
   return (
     <FormControl>
       <Flex alignItems="center" justifyContent="space-between" w="full">
-        <FormLabel color={"yellow.50"} htmlFor={props.id || undefined} mb={2}>
+        <FormLabel color="black" htmlFor={props.id || undefined} mb="2">
           {label}
         </FormLabel>
       </Flex>

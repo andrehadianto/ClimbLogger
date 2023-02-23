@@ -26,7 +26,7 @@ const LoginPage = () => {
       <PageHead description="Login" name="Login" />
       <Flex align="center" flexDir="column" h="full" px="12" py="20">
         <VStack className="py-10">
-          <Heading fontWeight="hairline" size="h1">
+          <Heading fontFamily="Lato" fontWeight="hairline" size="h1">
             ALLEZ
           </Heading>
           <Text size="md">climb logger</Text>

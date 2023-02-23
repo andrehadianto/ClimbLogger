@@ -7,9 +7,8 @@ export const Input = defineStyleConfig({
       field: {
         rounded: "md",
         _focus: {
-          borderColor: "yellow.50",
+          borderColor: "black",
         },
-        _hover: {},
       },
     },
   },

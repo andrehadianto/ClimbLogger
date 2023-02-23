@@ -8,11 +8,11 @@ export const NumberInput = defineStyleConfig({
       field: {
         rounded: "md",
         _focus: {
-          borderColor: "yellow.50",
+          borderColor: "black",
         },
       },
       stepper: {
-        color: "yellow.50",
+        color: "black",
       },
       stepperGroup: {},
     },

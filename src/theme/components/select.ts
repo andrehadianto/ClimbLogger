@@ -7,11 +7,11 @@ export const Select = defineStyleConfig({
       field: {
         rounded: "md",
         _focusVisible: {
-          borderColor: "yellow.50",
+          borderColor: "black",
         },
       },
       icon: {
-        color: "yellow.50",
+        color: "black",
       },
     },
   },

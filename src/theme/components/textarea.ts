@@ -6,7 +6,7 @@ export const Textarea = defineStyleConfig({
     filled: {
       rounded: "md",
       _focus: {
-        borderColor: "yellow.50",
+        borderColor: "black",
       },
     },
   },

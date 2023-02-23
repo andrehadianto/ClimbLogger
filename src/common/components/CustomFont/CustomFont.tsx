@@ -4,6 +4,14 @@ export const ChakraFonts = () => (
   <Global
     styles={`
     @font-face {
+      font-family: "AbrilFatface";
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(/assets/fonts/AbrilFatface/AbrilFatface-Regular.ttf) format("truetype");
+    }
+
+    @font-face {
       font-family: "Lato";
       font-style: normal;
       font-weight: 900;

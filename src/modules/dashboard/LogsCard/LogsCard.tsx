@@ -77,21 +77,19 @@ export const LogsCard: FunctionComponent<Props> = ({
           {statsData.map(({ icon, text }) => (
             <HStack key={text} spacing="2">
               {icon}
-              <Text size="sm">{text}</Text>
+              <Text size="sm" textOverflow="ellipsis">
+                {text}
+              </Text>
             </HStack>
           ))}
         </VStack>
         <VStack justify="space-between" w="100px">
           {isNaN(parseInt(grade)) === false ? (
-            <Heading fontFamily="Circular-Loom" size="h1">
-              {grade.toUpperCase()}
-            </Heading>
+            <Heading size="h1">{grade.toUpperCase()}</Heading>
           ) : (
             <Center h="88px" w="full">
               {grade.toLowerCase() === "w" ? (
-                <Heading fontFamily="Circular-Loom" size="h1">
-                  W
-                </Heading>
+                <Heading size="h1">W</Heading>
               ) : (
                 <Box
                   bgColor={grade}

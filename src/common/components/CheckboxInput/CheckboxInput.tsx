@@ -16,12 +16,12 @@ export const CheckboxInput = ({ label, wrapperProps, ...props }: Props) => {
   return (
     <FormControl {...wrapperProps}>
       <Flex alignItems="center" justifyContent="space-between" w="full">
-        <FormLabel color={"yellow.50"} htmlFor={props.id || undefined} mb={2}>
+        <FormLabel color="black" htmlFor={props.id || undefined} mb="2">
           {label}
         </FormLabel>
       </Flex>
-      <Flex h={10}>
-        <ChakraCheckbox colorScheme={"yellow"} size={"lg"} {...props} />
+      <Flex h="10">
+        <ChakraCheckbox colorScheme="gray" size="lg" {...props} />
       </Flex>
     </FormControl>
   );

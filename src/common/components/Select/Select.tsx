@@ -28,7 +28,7 @@ export const Select = ({
   return (
     <FormControl {...wrapperProps}>
       <Flex alignItems="center" justifyContent="space-between" w="full">
-        <FormLabel color={"yellow.50"} htmlFor={props.id || undefined} mb={2}>
+        <FormLabel color="black" htmlFor={props.id || undefined} mb="2">
           {label}
         </FormLabel>
       </Flex>
@@ -48,7 +48,7 @@ export const Select = ({
           ))}
       </ChakraSelect>
       {errorMessage && (
-        <Flex mt={1}>
+        <Flex mt="1">
           <HStack spacing="1">
             <AlertIcon color="#F6655A" height="22px" width="22px" />
             <Text color="red.50" size="sm">
