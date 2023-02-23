@@ -18,12 +18,7 @@ export const InstagramIframe = ({ value }: Props) => {
       w="full"
     >
       {shouldRender ? (
-        <iframe
-          frameBorder="0"
-          height="436"
-          src={value}
-          width="240"
-        />
+        <iframe frameBorder="0" height="436" src={value} width="240" />
       ) : (
         // TODO: upload placeholder
         <Text color="grey.60" size="md">
