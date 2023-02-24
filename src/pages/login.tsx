@@ -1,13 +1,11 @@
-import { Box, Flex, Heading, Text, VStack } from "@chakra-ui/react";
+import { Flex, Heading, Text, VStack } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import { AuthLayout } from "@/common/components/AuthLayout";
 import { PageHead } from "@/common/components/PageHead";
-import { FirebaseContextProvider } from "@/common/context/useFirebase";
 
-import { LoginView } from "@/modules/LoginView";
 import TelegramLogin from "@/modules/LoginView/TelegramLogin";
 
 import { selectUser } from "@/store/userSlice";
@@ -22,7 +20,7 @@ const LoginPage = () => {
   }, [user]);
 
   return (
-    <FirebaseContextProvider>
+    <>
       <PageHead description="Login" name="Login" />
       <Flex align="center" flexDir="column" h="full" px="12" py="20">
         <VStack className="py-10">
@@ -32,9 +30,8 @@ const LoginPage = () => {
           <Text size="md">climb logger</Text>
         </VStack>
         <TelegramLogin />
-        <LoginView />
       </Flex>
-    </FirebaseContextProvider>
+    </>
   );
 };
 
