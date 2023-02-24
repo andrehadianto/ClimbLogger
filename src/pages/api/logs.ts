@@ -10,7 +10,7 @@ const handler = async (request, response) => {
 
     const logQuery = query(
       collection(db, "logs"),
-      where("userRef", "==", `${userRef}`),
+      where("userRef", "==", userRef),
       orderBy("Timestamp", "desc") // latest first
     );
     const querySnapshot = await getDocs(logQuery);

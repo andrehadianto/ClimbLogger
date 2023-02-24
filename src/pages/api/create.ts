@@ -4,11 +4,20 @@ import { db } from "@/config/firebase";
 
 const handler = async (request, response) => {
   try {
-    const { gym, grade, attempt, color, instagram, description, ascend } =
-      JSON.parse(request.body);
+    const {
+      userRef,
+      gym,
+      grade,
+      attempt,
+      color,
+      instagram,
+      description,
+      ascend,
+    } = JSON.parse(request.body);
     const timeStamp = Date.now(); // in milliseconds
 
     const docRef = await addDoc(collection(db, "logs"), {
+      userRef,
       Gym: gym,
       Grade: grade,
       Attempts: attempt,

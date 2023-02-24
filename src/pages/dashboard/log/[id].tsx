@@ -27,6 +27,8 @@ import { GYM_MAPPING } from "@/common/constants/gym";
 import { MsToDate } from "@/common/functions/MsToDate";
 import { withOpacity } from "@/common/functions/withOpacity";
 
+import { InstagramIframe } from "@/modules/create/InstagramIframe";
+
 const DEFAULT_DATA = {
   gym: "Boulder Planet (Sembawang)",
   date: 0,
@@ -110,7 +112,12 @@ const Log = () => {
       <Flex align="center" bg="white" boxShadow="md" h="56px" p="8px 20px">
         <ArrowLeft onClick={() => router.back()} />
       </Flex>
-      <Center bg="grey.10" h="300px" position="relative" w="full">
+      <Center
+        bg="grey.10"
+        h={data.instagram ? "440px" : "300px"}
+        position="relative"
+        w="full"
+      >
         <SendTag
           borderRadius="0"
           bottom="0"
@@ -119,7 +126,11 @@ const Log = () => {
           right="0"
           unsent={data.sent}
         />
-        <Image alt="route-image" src="https://placekitten.com/g/200/300" />
+        {data.instagram ? (
+          <InstagramIframe value={data.instagram} />
+        ) : (
+          <Image alt="route-image" src="https://placekitten.com/g/200/300" />
+        )}
       </Center>
       <Box p="20px">
         <VStack spacing="4">
