@@ -16,12 +16,12 @@ export interface CreateViewContextType {
 }
 
 const schema = z.object({
-  gym: z.string(),
-  grade: z.string(),
+  gym: z.string().min(1, { message: "Must select an option" }),
+  grade: z.string().min(1, { message: "Must select an option" }),
   attempt: z.number(),
-  color: z.string(),
-  instagram: z.string(),
-  description: z.string().optional(),
+  color: z.string().min(1, { message: "Must select an option" }),
+  instagram: z.optional(z.string()),
+  description: z.optional(z.string()),
   ascend: z.boolean(),
 });
 
@@ -48,7 +48,7 @@ export const CreateViewContextProvider = ({
   const toast = useToast();
 
   const methods = useForm<Schema>({
-    mode: "onChange",
+    mode: "all",
     defaultValues: DEFAULT_VALUES,
     resolver: zodResolver(schema),
   });
