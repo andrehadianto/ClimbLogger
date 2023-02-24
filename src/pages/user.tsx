@@ -5,21 +5,26 @@ import {
   Flex,
   HStack,
   Text,
+  useDisclosure,
   VStack,
 } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 
 import { FilterIcon, FlagIcon, UserIcon } from "@/common/components/CustomIcon";
 
+import { AppInfoModal } from "@/modules/user/AppInfoModal";
 import { LogoutButton } from "@/modules/user/Logout";
 
 import { selectUser } from "@/store/userSlice";
 
 const User = () => {
+  const { isOpen, onClose, onOpen } = useDisclosure();
+
   const user = useSelector(selectUser);
 
   return (
     <Box minH="calc(100vh - 56px)" position="relative" px="5">
+      <AppInfoModal isOpen={isOpen} onClose={onClose} />
       <Flex flexDir="column" justify="center" pb="calc(88px + 56px)" pt="5">
         <VStack my="5">
           <Avatar
@@ -67,7 +72,9 @@ const User = () => {
         </HStack>
       </Flex>
       <VStack bottom="0" h="88px" position="absolute" w="calc(100% - 40px)">
-        <Button w="full">App Info</Button>
+        <Button w="full" onClick={onOpen}>
+          App Info
+        </Button>
         <LogoutButton />
       </VStack>
     </Box>
