@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const DEFAULT_USER = {
+import { TelegramUser } from "@/modules/LoginView/TelegramLogin";
+
+const DEFAULT_USER: TelegramUser = {
   auth_date: 0,
   first_name: "",
   hash: "",
@@ -26,6 +28,6 @@ export const userSlice = createSlice({
 
 export const { login, logout } = userSlice.actions;
 
-export const selectUser = (state) => state.user.user;
+export const selectUser = (state) => state.user;
 
 export default userSlice.reducer;
