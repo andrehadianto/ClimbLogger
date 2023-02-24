@@ -32,6 +32,8 @@
     "react-hook-form": "^7.42.1",
     "react-redux": "^8.0.2",
     "redux": "^4.2.0",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.4.2",
     "sass": "^1.52.1",
     "zod": "^3.20.2"
   },
