@@ -6,6 +6,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { CoreLayout } from "@/common/components/CoreLayout";
 import { ChakraFonts } from "@/common/components/CustomFont";
 import { PageHead } from "@/common/components/PageHead";
+import { ProtectedLayout } from "@/common/components/ProtectedLayout";
 
 import { CreateViewContextProvider } from "@/modules/create/CreateFormContext";
 
@@ -16,7 +17,7 @@ import "@/styles/globals.scss";
 import "firebaseui/dist/firebaseui.css";
 
 export const App = ({ Component, pageProps: { session, ...pageProps } }) => {
-  const Layout = Component.layout ? Component.layout : CoreLayout;
+  const Layout = Component.layout ? Component.layout : ProtectedLayout;
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>

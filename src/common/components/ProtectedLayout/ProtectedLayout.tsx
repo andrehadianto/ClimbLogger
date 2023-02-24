@@ -1,23 +1,30 @@
 import { useRouter } from "next/router";
 import { useEffect, type PropsWithChildren } from "react";
+import { useSelector } from "react-redux";
+
+import { TelegramUser } from "@/modules/LoginView/TelegramLogin";
+
+import { CoreLayout } from "../CoreLayout";
+
+import { selectUser } from "@/store/userSlice";
 
 interface ProtectedLayoutProps {
-  user: boolean;
   redirectPath?: string;
 }
 
 export const ProtectedLayout = ({
-  user,
-  redirectPath = "/",
+  redirectPath = "/login",
   children,
 }: PropsWithChildren<ProtectedLayoutProps>) => {
+  const user = useSelector(selectUser);
   const router = useRouter();
 
   useEffect(() => {
-    if (!user) {
+    console.log(user);
+    if (user && user.auth_date === 0) {
       router.replace(redirectPath);
     }
   }, [user, redirectPath, router]);
 
-  return <>{children}</>;
+  return <CoreLayout>{children}</CoreLayout>;
 };
