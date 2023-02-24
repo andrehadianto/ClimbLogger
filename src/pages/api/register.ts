@@ -12,7 +12,7 @@ const handler = async (request, response) => {
     const docRef = await setDoc(userRef, {
       first_name,
       hash,
-      id: `${id}`,
+      id,
       last_name,
       photo_url,
       username,
