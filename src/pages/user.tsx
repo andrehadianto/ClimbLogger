@@ -5,7 +5,6 @@ import {
   Flex,
   HStack,
   Text,
-  useBoolean,
   VStack,
 } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
@@ -23,7 +22,11 @@ const User = () => {
     <Box minH="calc(100vh - 56px)" position="relative" px="5">
       <Flex flexDir="column" justify="center" pb="calc(88px + 56px)" pt="5">
         <VStack my="5">
-          <Avatar name="Dan Abrahmov" size="xl" src={user.photo_url} />
+          <Avatar
+            bg="grey.20"
+            name={`${user.first_name} ${user.last_name}`}
+            size="xl"
+          />
           <Text fontWeight="600" size="lg">
             {`@${user.username}`}
           </Text>

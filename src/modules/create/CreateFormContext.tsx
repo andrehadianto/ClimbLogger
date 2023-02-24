@@ -3,9 +3,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/router";
 import { createContext, PropsWithChildren, useContext, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 import * as z from "zod";
 
 import { CREATE_LOG_FAIL, CREATE_LOG_SUCCESS } from "./constants/toasts";
+
+import { selectUser } from "@/store/userSlice";
 
 export interface CreateViewContextType {
   handleOnSubmit: () => void;
@@ -39,6 +42,7 @@ const CreateViewContext = createContext<CreateViewContextType | null>(null);
 export const CreateViewContextProvider = ({
   children,
 }: PropsWithChildren<{}>) => {
+  const user = useSelector(selectUser);
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const toast = useToast();
@@ -54,7 +58,7 @@ export const CreateViewContextProvider = ({
     const body = methods.watch();
     const res = await fetch("/api/create", {
       method: "POST",
-      body: JSON.stringify(body),
+      body: JSON.stringify({ userRef: user.id, ...body }),
     });
 
     methods.reset();

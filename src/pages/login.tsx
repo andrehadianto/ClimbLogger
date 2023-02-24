@@ -15,9 +15,9 @@ const LoginPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (user) router.push("/dashboard");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
+    console.log(user);
+    if (user && user.auth_date !== 0) router.push("/dashboard");
+  }, [router, user]);
 
   return (
     <>

@@ -15,6 +15,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 import { ChakraLink } from "@/common/components/ChakraLink";
 import { FilterIcon, PlusIcon } from "@/common/components/CustomIcon";
@@ -24,7 +25,10 @@ import { withOpacity } from "@/common/functions/withOpacity";
 
 import { LogsCard } from "@/modules/dashboard/LogsCard";
 
+import { selectUser } from "@/store/userSlice";
+
 const Dashboard = () => {
+  const user = useSelector(selectUser);
   useEffect(() => {
     set("chakra-ui-color-mode", "light");
   }, []);
@@ -33,7 +37,10 @@ const Dashboard = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("/api/logs")
+    fetch("/api/logs", {
+      method: "POST",
+      body: JSON.stringify({ id: user.id }),
+    })
       .then((res) => res.json())
       .then((res) => setData(res))
       .finally(() => setFetching.off());
@@ -44,7 +51,7 @@ const Dashboard = () => {
     if (fetching) return <Spinner />;
     else if (data.length === 0)
       return (
-        <>
+        <VStack h="calc(100vh - 112px - 36px)" pt="30vh">
           <Heading color="grey.70">{`There's no route.`}</Heading>
           <Text color="grey.60" display="flex" flexDir="row" mt="1 !important">
             Tap
@@ -53,7 +60,7 @@ const Dashboard = () => {
             </Box>
             to add one!
           </Text>
-        </>
+        </VStack>
       );
     else
       return data.map((item) => (

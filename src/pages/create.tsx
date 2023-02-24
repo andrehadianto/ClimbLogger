@@ -20,12 +20,6 @@ const Create = () => {
   const { handleSubmit, control, watch } = useFormContext<CreateFormSchema>();
   const { handleOnSubmit, loading } = useCreateForm();
 
-  const handleOnClick = async () => {
-    await fetch("http://localhost:3000/api/users")
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-  };
-
   const instagramLink = watch("instagram");
 
   return (

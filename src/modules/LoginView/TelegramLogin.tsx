@@ -9,6 +9,8 @@ export interface TelegramUser {
   id: number;
   username: string;
   first_name: string;
+  last_name: string;
+  photo_url: string;
   hash: string;
 }
 
@@ -19,11 +21,16 @@ function TelegramLogin() {
   const containerRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
 
-  const handleTelegramResponse = (user: TelegramUser) => {
-    dispatch(login(user));
-  };
-
   useEffect(() => {
+    const handleTelegramResponse = async (user: TelegramUser) => {
+      await fetch("/api/register", {
+        method: "POST",
+        body: JSON.stringify(user),
+      })
+        .then(() => dispatch(login(user)))
+        .catch(console.error);
+    };
+
     (window as any).telegramLoginWidgetCb = handleTelegramResponse;
 
     const script = document.createElement("script");
@@ -52,7 +59,7 @@ function TelegramLogin() {
         delete (window as any).telegramLoginWidgetCb;
       }
     };
-  });
+  }, [TELEGRAM_LOGIN_BOT, dispatch]);
 
   return <Box ref={containerRef} />;
 }
