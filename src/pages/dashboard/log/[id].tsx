@@ -62,6 +62,7 @@ const Log = () => {
           Timestamp: date,
           VideoURL: instagram,
         } = res;
+        console.log(res);
         setData({
           gym,
           date,
@@ -124,7 +125,7 @@ const Log = () => {
           loading={loading}
           position="absolute"
           right="0"
-          unsent={data.sent}
+          unsent={!data.sent}
         />
         {data.instagram ? (
           <InstagramIframe value={data.instagram} />
