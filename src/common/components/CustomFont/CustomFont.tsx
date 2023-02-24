@@ -4,11 +4,25 @@ export const ChakraFonts = () => (
   <Global
     styles={`
     @font-face {
-      font-family: "AbrilFatface";
+      font-family: "JosefinSans";
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url(/assets/fonts/JosefinSans/JosefinSans-Bold.ttf) format("truetype");
+    }
+    @font-face {
+      font-family: "JosefinSans";
       font-style: normal;
       font-weight: 400;
       font-display: swap;
-      src: url(/assets/fonts/AbrilFatface/AbrilFatface-Regular.ttf) format("truetype");
+      src: url(/assets/fonts/JosefinSans/JosefinSans-Regular.ttf) format("truetype");
+    }
+    @font-face {
+      font-family: "JosefinSans";
+      font-style: normal;
+      font-weight: 100;
+      font-display: swap;
+      src: url(/assets/fonts/JosefinSans/JosefinSans-Thin.ttf) format("truetype");
     }
 
     @font-face {
