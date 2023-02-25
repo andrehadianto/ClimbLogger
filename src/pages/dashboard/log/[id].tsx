@@ -127,7 +127,6 @@ const Log = () => {
                 align="center"
                 h="full"
                 justify="space-between"
-                spacing="44px"
                 w="full"
               >
                 <VStack align="flex-start" spacing="4">
