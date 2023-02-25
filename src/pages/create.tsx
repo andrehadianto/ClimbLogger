@@ -24,11 +24,7 @@ const Create = () => {
 
   return (
     <div className="h-full">
-      <PageHead
-        append={false}
-        description="Home page description"
-        name="Home"
-      />
+      <PageHead append={false} description="Create route" name="Create" />
       <Box px={"20px"} py={"20px"}>
         <form onSubmit={handleSubmit(handleOnSubmit)}>
           <VStack spacing={"16px"}>
