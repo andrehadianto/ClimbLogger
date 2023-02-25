@@ -71,11 +71,11 @@ const Dashboard = () => {
           width="full"
         >
           <LogsCard
-            date={item.Timestamp}
-            grade={item.Grade}
-            gym={item.Gym}
-            noAttempt={item.Attempts}
-            sent={item.Sent}
+            date={item.timestamp}
+            grade={item.grade}
+            gym={item.gym}
+            noAttempt={item.attempt}
+            sent={item.ascend}
           />
         </ChakraLink>
       ));

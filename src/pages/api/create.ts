@@ -4,28 +4,12 @@ import { db } from "@/config/firebase";
 
 const handler = async (request, response) => {
   try {
-    const {
-      userRef,
-      gym,
-      grade,
-      attempt,
-      color,
-      instagram,
-      description,
-      ascend,
-    } = JSON.parse(request.body);
-    const timeStamp = Date.now(); // in milliseconds
+    const body = JSON.parse(request.body);
+    const timestamp = Date.now(); // in milliseconds
 
     const docRef = await addDoc(collection(db, "logs"), {
-      userRef,
-      Gym: gym,
-      Grade: grade,
-      Attempts: attempt,
-      RouteColor: color,
-      Sent: ascend,
-      VideoURL: instagram,
-      Description: description,
-      Timestamp: timeStamp,
+      ...body,
+      timestamp,
     });
 
     response.status(200).json({ id: docRef });

@@ -31,9 +31,9 @@ import { InstagramIframe } from "@/modules/create/InstagramIframe";
 
 const DEFAULT_DATA = {
   gym: "Boulder Planet (Sembawang)",
-  date: 0,
-  noAttempt: 5,
-  sent: true,
+  timestamp: 0,
+  attempt: 5,
+  ascend: true,
   grade: "11",
   description:
     "start was too easy. hoping for a challenge but this 11 was so easy, I could have done it with my eyes closed.",
@@ -52,28 +52,8 @@ const Log = () => {
 
     fetch(`/api/log/${logId}`)
       .then((res) => res.json())
-      .then((res) => {
-        const {
-          Attempts: noAttempt,
-          Description: description,
-          Grade: grade,
-          Gym: gym,
-          Sent: sent,
-          Timestamp: date,
-          VideoURL: instagram,
-        } = res;
-        console.log(res);
-        setData({
-          gym,
-          date,
-          noAttempt,
-          sent,
-          grade,
-          description,
-          instagram,
-        });
-        setLoading.off();
-      });
+      .then((res) => setData(res))
+      .finally(() => setLoading.off());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.isReady, logId]);
 
@@ -84,11 +64,11 @@ const Log = () => {
     },
     {
       icon: <CalendarIcon color="black" />,
-      text: MsToDate(data.date),
+      text: MsToDate(data.timestamp),
     },
     {
       icon: <FlagIcon />,
-      text: data.noAttempt + " Attempt(s)",
+      text: data.attempt + " Attempt(s)",
     },
     {
       icon: <InstagramIcon />,
@@ -125,7 +105,7 @@ const Log = () => {
           loading={loading}
           position="absolute"
           right="0"
-          unsent={!data.sent}
+          unsent={!data.ascend}
         />
         {data.instagram ? (
           <InstagramIframe value={data.instagram} />

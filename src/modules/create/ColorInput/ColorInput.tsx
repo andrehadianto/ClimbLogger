@@ -9,7 +9,7 @@ interface Props {
   control: Control<Schema, any>;
 }
 
-const FIELD_NAME = "color";
+const FIELD_NAME = "routeColor";
 
 export const ColorInput = ({ control }: Props) => {
   return (
