@@ -24,7 +24,7 @@ const schema = z.object({
   gym: z.string().min(1, { message: "Must select an option" }),
   grade: z.string().min(1, { message: "Must select an option" }),
   attempt: z.number(),
-  color: z.string().min(1, { message: "Must select an option" }),
+  routeColor: z.string().min(1, { message: "Must select an option" }),
   instagram: z.optional(z.string()),
   description: z.optional(z.string()),
   ascend: z.boolean(),
