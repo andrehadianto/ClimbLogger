@@ -61,6 +61,7 @@ const EditForm = ({ id, preloadedValues, router }: EditFormProps) => {
 
     if (res.status === 200) {
       router.replace(`/dashboard/log/${id}`);
+      router.reload();
       toast(EDIT_LOG_SUCCESS);
     } else {
       toast(EDIT_LOG_FAIL);
