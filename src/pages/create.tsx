@@ -30,7 +30,6 @@ const Create = () => {
         name="Home"
       />
       <Box px={"20px"} py={"20px"}>
-        {/* <Button onClick={handleOnClick}>API</Button> */}
         <form onSubmit={handleSubmit(handleOnSubmit)}>
           <VStack spacing={"16px"}>
             <InstagramIframe value={instagramLink} />
