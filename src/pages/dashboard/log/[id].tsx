@@ -58,7 +58,7 @@ const Log = () => {
       .then((res) => setData(res))
       .finally(() => setLoading.off());
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.isReady, logId]);
+  }, [router, logId]);
 
   const statsData = [
     {
