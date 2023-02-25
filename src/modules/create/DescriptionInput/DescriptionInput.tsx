@@ -19,7 +19,7 @@ export const DescriptionInput = ({ control }: Props) => {
         <TextArea
           errorMessage={error?.message}
           id={FIELD_NAME}
-          label="Description"
+          label="Description (optional)"
           placeholder="The crux is at..."
           rows={5}
           {...field}

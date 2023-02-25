@@ -30,7 +30,7 @@ const DEFAULT_VALUES = {
   grade: "",
   attempt: 0,
   routeColor: "",
-  instagram: "",
+  instagram: "(optional)",
   description: "",
   ascend: false,
 };

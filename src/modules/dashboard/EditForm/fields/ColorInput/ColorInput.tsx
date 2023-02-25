@@ -20,7 +20,7 @@ export const ColorInput = ({ control }: Props) => {
         <Select
           errorMessage={error?.message}
           id={FIELD_NAME}
-          label="Select color"
+          label="Select the route's color"
           options={COLOR_OPTION}
           {...field}
         />
