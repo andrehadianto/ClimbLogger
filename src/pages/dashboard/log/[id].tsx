@@ -123,12 +123,7 @@ const Log = () => {
           </Center>
           <Box p="20px">
             <VStack spacing="4">
-              <HStack
-                align="center"
-                h="full"
-                justify="space-between"
-                w="full"
-              >
+              <HStack align="center" h="full" justify="space-between" w="full">
                 <VStack align="flex-start" spacing="4">
                   {statsData.map(({ icon, text, href }) => (
                     <HStack key={text} spacing="2" w="full">

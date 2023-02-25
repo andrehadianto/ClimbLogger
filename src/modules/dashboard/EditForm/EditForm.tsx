@@ -41,7 +41,7 @@ interface EditFormProps {
 const EditForm = ({ id, preloadedValues, router }: EditFormProps) => {
   const [submitting, setSubmitting] = useBoolean(false);
   const toast = useToast();
-  const { handleSubmit, watch, reset, getValues, control } = useForm({
+  const { handleSubmit, watch, reset, control } = useForm({
     defaultValues: preloadedValues,
   });
 
@@ -50,7 +50,7 @@ const EditForm = ({ id, preloadedValues, router }: EditFormProps) => {
   const onSubmit = async () => {
     setSubmitting.on();
 
-    const body = getValues();
+    const body = watch();
     const res = await fetch(`/api/log/edit/${id}`, {
       method: "POST",
       body: JSON.stringify(body),
