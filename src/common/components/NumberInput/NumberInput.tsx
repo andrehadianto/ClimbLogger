@@ -17,14 +17,12 @@ import { AlertIcon } from "../CustomIcon";
 
 interface Props extends NumberInputFieldProps {
   label: string;
-  ref: RefCallBack;
   errorMessage?: string;
   numberInputProps?: NumberInputProps;
 }
 
 export const NumberInput = ({
   label,
-  ref,
   errorMessage,
   numberInputProps,
   ...props
@@ -45,18 +43,9 @@ export const NumberInput = ({
       </Flex>
       <ChakraNumberInput errorBorderColor="red.70" {...numberInputProps}>
         <HStack>
-          <Button {...getDecrementButtonProps()} ref={ref}>
-            -
-          </Button>
-          <Input
-            {...getInputProps()}
-            {...props}
-            ref={ref}
-            name={numberInputProps.name}
-          />
-          <Button {...getIncrementButtonProps()} ref={ref}>
-            +
-          </Button>
+          <Button {...getDecrementButtonProps()}>-</Button>
+          <Input {...getInputProps()} {...props} name={numberInputProps.name} />
+          <Button {...getIncrementButtonProps()}>+</Button>
         </HStack>
       </ChakraNumberInput>
       {errorMessage && (
