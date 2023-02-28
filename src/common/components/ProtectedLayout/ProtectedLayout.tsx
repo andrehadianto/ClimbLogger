@@ -20,7 +20,6 @@ export const ProtectedLayout = ({
   const router = useRouter();
 
   useEffect(() => {
-    console.log(user);
     if (user && user.auth_date === 0) {
       router.replace(redirectPath);
     }

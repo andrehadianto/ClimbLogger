@@ -71,7 +71,7 @@ const User = () => {
           </VStack>
         </HStack>
       </Flex>
-      <VStack bottom="0" h="88px" position="absolute" w="calc(100% - 40px)">
+      <VStack h="88px">
         <Button w="full" onClick={onOpen}>
           App Info
         </Button>
