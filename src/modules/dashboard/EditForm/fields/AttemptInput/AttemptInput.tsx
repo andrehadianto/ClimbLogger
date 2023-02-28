@@ -16,11 +16,10 @@ export const AttemptInput = ({ control }: Props) => {
       control={control}
       name={FIELD_NAME}
       render={({
-        field: { ref, onChange, value, ...formFieldsProps },
+        field: { onChange, value, ...formFieldsProps },
         fieldState: { error },
       }) => (
         <NumberInput
-          ref={ref}
           errorMessage={error?.message}
           id={FIELD_NAME}
           label="No. of attempt(s)"
