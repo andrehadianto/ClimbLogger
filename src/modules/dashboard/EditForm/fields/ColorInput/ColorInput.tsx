@@ -22,6 +22,7 @@ export const ColorInput = ({ control }: Props) => {
           id={FIELD_NAME}
           label="Select the route's color"
           options={COLOR_OPTION}
+          placeholder="Select color"
           {...field}
         />
       )}

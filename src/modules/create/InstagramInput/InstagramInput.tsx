@@ -24,7 +24,7 @@ export const InstagramInput = ({ control }: Props) => {
           errorMessage={error?.message}
           id={FIELD_NAME}
           label="Link to instagram (optional)"
-          placeholder="#"
+          placeholder="(optional)"
           value={value ?? ""}
           onBlurCapture={() => {
             onChange(formatInstagramLink(value));
