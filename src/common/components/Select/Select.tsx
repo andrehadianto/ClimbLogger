@@ -33,7 +33,7 @@ export const Select = ({
         </FormLabel>
       </Flex>
       <ChakraSelect {...props}>
-        <option disabled hidden selected color="red" value="">
+        <option disabled hidden color="red" value="">
           {label}
         </option>
         {options &&
